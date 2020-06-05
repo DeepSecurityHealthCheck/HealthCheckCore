@@ -178,7 +178,7 @@ Detailed documentation on the code, project architecture can be found on the `do
 ## AUTHORS
 Deep Security Health Check was originally Developed by
 
-* Anderson Leite <Anderson_Leite@trendmicro.com>
+* Anderson Leite [@aandersonl](https://github.com/AandersonL)
 * Angelo Rodem <Angelo_Rodem@trendmicro.com>
 * João Guimarães <Joao_Guimaraes@trendmicro.com>
 
