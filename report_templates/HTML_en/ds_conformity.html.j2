@@ -1,0 +1,173 @@
+<div class="page">
+<div class="trend-text-red trend-font-300" style="font-size: 30px; padding-top: 30px;">
+    <a name="page06">3. Enviroment Conformity Details</a>
+</div>
+
+<div class="row" style="margin:0;">
+    <div class="col-lg-11">
+        <div class="trend-text-red trend-font-200" style="font-size: 18px; margin-top: 10px;">
+            Ratio of Managed Computers:
+            <span class="trend-font-300">
+              {% if (100 * (report_data.num_managed_computers / report_data.num_computers)) | int >= 80 %}
+              High
+              {% else %}
+              Low
+              {% endif %}
+            </span>
+        </div>
+    </div>
+
+      {% if (100 * (report_data.num_managed_computers / report_data.num_computers)) | int >= 80 %}
+       <div class="col-lg-1 trend-text-green" style="font-size: 22px; padding-top: 17px;">
+        <div><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+        </div>
+      {% else %}
+      <div class="col-lg-1 trend-text-red" style="font-size: 22px; padding-top: 17px;">
+        <div><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></div>
+      </div>
+        {% endif %}
+
+</div>
+<div class="row" style="margin:0;">
+    <div class="col-lg-10">
+        <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 12px; text-align: justify;">
+            <p>
+              {% if (100 * (report_data.num_managed_computers / report_data.num_computers)) | int >= 80 %}
+              A great number (80% or more) of computers registered in the
+              Deep Security Manager have Deep Security Agents
+              installed, properly activated, and are being actively protected according to their configurations.
+              {% else %}
+              A great number (20% or more) of computers registered in the
+              Deep Security Manager do not have Deep Security Agents
+              installed and/or properly activated, and are not being actively
+              protected.
+              {% endif %}
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- SCHEDULED TASKS -->
+
+<div class="row" style="margin:0;">
+
+    <div class="col-lg-11">
+        <div class="trend-text-red trend-font-200" style="font-size: 18px; margin-top: 10px;">
+            Computer related Scheduled Tasks:
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin:0;">
+    <div class="col-lg-10">
+        <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 12px; text-align: justify;">
+        <p>
+            The current version of the Deep Security SDK is unable to query smart folders, 
+            if the environment uses this feature, this check may not be as accurate as intended. 
+        <br/>
+
+            For computers to be included in the counting below, they must be covered by a scheduled task that is fully conformant.
+        </p> 
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin:0;">
+    <div class="col-lg-10">
+        <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 12px; text-align: justify;">
+
+            <table>
+                <tr>
+                    <td class="trend-text-grey-dark trend-font-700">Type of Scheduled Task</td>
+                    <td class="trend-text-grey-dark trend-font-700" style="text-align: center">Computers covered</td>
+                    <td class="trend-text-grey-dark trend-font-700">Status</td>
+                </tr>
+                
+                {%for key,value in report_data["scheduled_tasks_results"].items() %}
+                <tr>
+                    <td>{{report_data["scheduled_tasks_results"][key]["checklist_description"]}}</td>
+                    <td style="text-align: center"> {{ report_data["scheduled_tasks_results"][key]["computers_in_filter"] | length }} /
+                    {{report_data["num_computers"]}}</td>
+                    
+                    <td style=" text-align: center" >
+                        {% if (report_data["scheduled_tasks_results"][key]["computers_in_filter"] | length)/report_data["num_computers"] >= 0.8%} 
+                            <div class="col-lg-1 trend-text-green" style="font-size: 22px; padding-top: 0px;">
+                                <div><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                            </div>
+                        {% else %}
+                            <div class="col-lg-1 trend-text-red" style="font-size: 22px; padding-top: 0px;">
+                                <div><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></div>
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+
+        <div class="trend-text-grey-dark trend-font-300" style="font-size: 10px; color: #666"> </div>
+    </div>
+
+</div>
+<BR/>
+
+<!------------------------------>
+
+
+
+<div class="row" style="margin:0;">
+    <div class="col-lg-11">
+        <div class="trend-text-red trend-font-200" style="font-size: 18px; margin-top: 10px;">
+            Deep Security Agent Version Distribution:
+            <span class="trend-font-300">
+              {% if report_data.agent_release | length > 1%}
+              Mixed
+              {% else %}
+              Homogeneous
+              {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin:0;">
+    <div class="col-lg-10">
+        <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 12px; text-align: justify;">
+            <p>
+              {% if report_data.agent_release | length > 1%}
+              Multiple versions of the Deep Security agent program have been detected on your network. Trend Micro recommends upgrading all Deep Security agents to the latest version to stay protected against emerging malware threats.
+              {% else %}
+              All agents in the environment are using the same major version. To further improve your security, make sure the the agents are properly updated.
+              {% endif %}
+              <br/>
+              Please note that Feature releases are interim releases that provide early access to new features, and are only supported for <span class="trend-text-grey-ultradark trend-font-700">six months after the next major release<span>.
+                 <a href="https://help.deepsecurity.trendmicro.com/feature-releases.html" target="_blank">(Learn More)</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin:0;">
+    <div class="col-lg-10">
+        <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 12px; text-align: justify;">
+
+            <table>
+                <tr>
+                    <td class="trend-text-grey-dark trend-font-700">Version</td>
+                    <td class="trend-text-grey-dark trend-font-700" style="text-align: center">Active Agents</td>
+                </tr>
+                {% for version, info in report_data.agent_release %}
+                <tr>
+                    <td>{{version}}</td>
+                    <td style="text-align: center">{{info.count}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="trend-text-grey-dark trend-font-300" style="font-size: 10px; color: #666"> </div>
+    </div>
+
+</div>
+<BR/>
+</div>

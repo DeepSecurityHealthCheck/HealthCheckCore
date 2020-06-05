@@ -1,0 +1,64 @@
+---
+#This yaml has the object to define the values related to the LOG INSPECTION
+#configuration that is specified per computer
+#expected accordingly the deep security best practice guide (v11.0).
+#Version 0.1 04-01-2019
+
+#The title is used for python scripts to call the information related to the
+#module. Please, do not change it.
+title: "log_inspection"
+descrption: ""
+log_inspection:
+  #It checks if log inspection module is activated.
+  log_inspection.state:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 10
+    #It has six possible operators. For this comparison, it is equal.
+    operator: EQUAL
+    operand: "on"
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "log_inspection"
+      failure_item: "State is off"
+      text: >
+        "The Log Inspection module captures and analyzes system logs to provide
+        audit evidence for PCI DSS or internal requirements that your
+        organization may have."
+  #This should typically be changed when a syslog server is used.
+  #This setting determines which event triggered by those rules is sent to
+  #the syslog server (if syslog is enabled).
+  computer_settings.log_inspection_setting_severity_clipping_agent_event_send_syslog_level_min.value:
+    weight: 7
+    operator: NOT_CONTAINS
+    #Values are strings such as 'Low (0)' or 'Medium (6)'
+    #Assuming a good minimum to be above the Low (0-3)
+    operand: ["Low"] 
+    description:
+      module: "log_inspection"
+      failure_item: "Set a minimum Severity clipping to send event above low"
+      text: >
+        "Send Deep Security Agent and Deep Security Virtual Appliance events to
+         syslog when they equal or exceed the following severity level: This
+         should typically be changed when a syslog server isused. This setting
+         determines which event triggered by those rules is sent to the syslog
+         server (if syslog is enabled). (Page 54 - DSBPG)"
+  #This setting determines which log inspection events are kept in the database
+  #and displayed on the log inspection events screen.
+  computer_settings.log_inspection_setting_severity_clipping_agent_event_store_level_min.value:
+    weight: 7
+    operator: NOT_CONTAINS
+    operand: ["Low"]
+    description:
+      module: "log_inspection"
+      failure_item: "Set a minimum Severity clipping to send event above low"
+      text: >
+        "Store events at the Deep Security Agent and Deep Security Virtual
+        Appliance for later retrieval by Deep Security Manager when they equal
+        or exceed the following severity level: This setting determines which
+        log inspection events are kept in the database and displayed on the log
+        inspection events screen. Custom rules can be made to monitor logs that
+        are not in the included set of rules. (Page 54 - DSBPG)"
+...

@@ -1,0 +1,58 @@
+
+<div class="page">
+
+        <div class="row" style="margin:0;">
+                <div class="row" style="margin:0;">
+                        <div class="alert alert-info trend-font-300" style="font-size:14px; padding-top:0; padding-bottom:0; word-wrap: break-word;">
+                          <p>次のキーを使用してレポートを閲覧することができます。 このレポートでは、 エージェントの詳細情報やポリシーについて、 詳しく記載しています。 この内容にもとづいて、 アップグレードすべきコンピュータやポリシー強化すべきグループを簡単に洗い出すことができます。 </p>
+                          <p style="text-align:center; font-family:courier; font-size:18px;">
+                          {{report_data.tech_key}}
+                          </p>
+                      </div>
+                <div class="col-lg-11">
+                    <div class="trend-text-red trend-font-200" style="font-size: 18px; margin-top: 10px;">
+                        修正すべき問題 トップ20
+                    </div>
+                </div>
+            
+                    {% if report_data.computers_average_conformity | int > 80%}
+                   <div class="col-lg-1 trend-text-green" style="font-size: 22px; padding-top: 17px;">
+                    <div><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                    </div>
+                  {% else %}
+                  <div class="col-lg-1 trend-text-red" style="font-size: 22px; padding-top: 17px;">
+                    <div><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></div>
+                  </div>
+            
+                    {% endif %}
+            
+            </div>
+
+                <div class="col-lg-10">
+                    <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 12px; word-wrap: break-word;">
+                        <p>次に示す誤った設定や不足している設定は、 貴社環境にて修正すべき対象です。 {{report_options.generation_date.year}}/{{report_options.generation_month}}/{{report_options.generation_day}}時点では、 列挙した問題はいずれも重大なレベルです。 そのため、 トレンドマイクロは、 各問題を慎重に評価して、 修正することを推奨します。 </p>
+                        <p>以下に列挙した問題は、 重要度が高い、 あるいは貴社に関連性が高い課題から20個に限定しました。 もし全課題について把握したい場合は、 上述の 技術レポート を参照して下さい。 <span style="font-size: 10px"> (期限: {{report_options.expiration_date.year}}/{{report_options.expiration_month}}/{{report_options.expiration_day}} ).</span>また、 表記した問題の解決方法については、 別途付録にて解説していますので、 ご参照ください。 </p>
+                        <p>ただし、 列挙した問題の中には、 貴社には当てはまらない問題も含まれている可能性があります。 これらの詳細な説明についても付録を参照してください。 </p>
+                    </div>
+                </div>
+            </div>
+            
+            {% for criticiy_level, info in report_options.dist_issues.items() %}
+            <div class="row" style="page-break-inside: avoid;margin:0; font-size:12px; word-wrap: break-word; ">
+                <div class="col-lg-10">
+                    <div style="float:left; padding-top: 5px; padding-left: 7px"><i class="fa fa-circle {{info.css_style}}" aria-hidden="true"></i></div>
+                    <div class="trend-text-grey-ultradark" style="padding-left: 25px; ">{{criticiy_level}}</div>
+                </div>
+                <BR/>
+                <ul>
+                    {% for issue in info.issues %}
+                    <li class="trend-text-grey-dark trend-font-300" style=" padding-right:35px; padding-top: 5px; font-size: 12px; ">
+                        <span class="trend-text-grey-ultradark trend-font-700">{{report_options.pretty_module_names[issue.description.module]}}</span> : {{issue.description.failure_item}}, {{issue.description.text}} [<span class="trend-text-grey-ultradark trend-font-700">{{issue.failed_times}}</span> 回発生]
+                    </li>
+                    {% endfor %}
+            
+                </ul>
+            </div>
+            {% endfor %}
+
+</div>

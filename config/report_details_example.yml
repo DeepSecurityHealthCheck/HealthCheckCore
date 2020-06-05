@@ -1,0 +1,13 @@
+customer_contacts:
+  John Doe:
+    email: jdoe@customer.com
+    phone: (yy) xxxx-xxxx
+    title: Information Security
+customer_name: Customer
+partner_contacts: {}
+partner_name: Partner
+trend_contacts:
+  Jane Smith:
+    email: jane_smith@trendmicro.com
+    phone: (zz) yyyy-yyyy
+    title: Sales Engineer

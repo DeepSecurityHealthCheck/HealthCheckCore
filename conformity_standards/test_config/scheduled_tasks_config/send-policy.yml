@@ -1,0 +1,24 @@
+title: "send-policy"
+description: "Weekly or more frequent Send-Policy"
+send-policy:
+
+  schedule_details.recurrence_type:
+    weight: 7
+    operator: NOT_EQUAL
+    operand: "monthly"
+    description:
+      module: "Scheduled Task: Send Policy"
+      failure_item: "No weekly recurrence"
+      text: "Trend Micro strongly recommends sending policies to computers
+        weekly and to run them as needed (Page 63 - DSBPG)"
+
+  schedule_details.recurrence_type:
+    weight: 7
+    operator: NOT_EQUAL
+    operand: "none"
+    description:
+      module: "Scheduled Task: Send Policy"
+      failure_item: "No weekly recurrence"
+      text: "Trend Micro strongly recommends sending policies to computers
+        weekly and to run them as needed (Page 63 - DSBPG)"
+  

@@ -1,0 +1,22 @@
+title: "send-policy"
+description: "ポリシーの配信（週次もしくはそれより高い頻度）"
+send-policy:
+
+  schedule_details.recurrence_type:
+    weight: 7
+    operator: NOT_EQUAL
+    operand: "monthly"
+    description:
+      module: "予約タスク: ポリシー配信"
+      failure_item: "週次単位より長い間隔での実行"
+      text: "週次でコンピュータにポリシーを配信し、 必要に応じて実行することを強く推奨します。 (62ページ - DSBPG)"
+
+  schedule_details.recurrence_type:
+    weight: 7
+    operator: NOT_EQUAL
+    operand: "none"
+    description:
+      module: "予約タスク: ポリシー配信"
+      failure_item: "週次単位より長い間隔での実行"
+      text: "週次でコンピュータにポリシーを送信し、 必要に応じて実行することを強く推奨します。 (62ページ - DSBPG)"
+  

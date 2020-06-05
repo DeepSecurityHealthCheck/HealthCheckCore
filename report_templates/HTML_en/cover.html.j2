@@ -1,0 +1,145 @@
+<div class="firstpage">
+    <div style="text-align:right; margin: -60px 30px 0 0; border:1px solid transparent">
+        <div style="float:right;padding-left:10px;display:block; ">
+
+            {% if report_options.include_customer_logo %}
+              <img src="img/customer_logos/{{report_options.customer_name}}.png" style="max-width:130px; max-height: 50px;" />
+            {% endif %}
+        </div>
+        <div style="float:right; padding-right:10px; border-right:2px solid #ddd;display:block;  ">
+            <img src="img/trend_logo.jpg" style="max-width:120px; max-height: 50px;" />
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <img src="img/page_templates/cover_hero_1.jpg" style="position:absolute; top: 500px; width:100%; z-index:-1;" />
+    <div class="trend-font-300 trend-text-grey-ultradark" style="padding-top:130px; padding-left: 80px;">
+        <div style="font-size:40px; font-stretch:ultra-condensed; line-height:200%;">
+            {{report_options.conformity_standard}}
+        </div>
+        <div class="trend-text-grey" style="font-size:30px; font-stretch:ultra-condensed; line-height:200%;">
+            Deep Security Health Check
+        </div>
+
+        <BR/>
+        <div class="trend-text-grey" style="font-size:14px; font-stretch:ultra-condensed; line-height:100%;">
+            Prepared for:
+        </div>
+        <div class="trend-text-grey" style="font-size:18px; font-stretch:ultra-condensed; line-height:100%;">
+            {{report_options.customer_name}}
+            <BR/>
+            <div class="trend-text-grey" style="font-size:12px; font-stretch:ultra-condensed; line-height:100%;">
+                Created on: {{report_options.generation_month}} {{report_options.generation_day}} of {{report_options.generation_date.year}} for {{report_options.customer_host}}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page">
+    <div class="trend-text-red trend-font-300" style="font-size: 30px; padding-top: 50px;">
+        Contact Details
+    </div>
+
+    {% if report_options.customer_contacts is not none %}
+    <div class="trend-text-red trend-font-700" style="text-align:left;padding-top: 5px;margin-bottom: 5px;"> {{report_options.customer_name | upper}}</div>
+        {% for  name,info in report_options.customer_contacts.items() %}
+        <dl style="padding-top:5px;">
+            <div class="trend-text-red 		 trend-font-700" style="text-align:left;padding-top: 5px;margin-bottom: 5px;"> {{name}}</div>
+            <div class="trend-text-grey-dark trend-font-300" style="text-align:left; font-size:12px; line-height: 5px; margin-bottom: 5px;"> {{info.title}} </div>
+            <div class="trend-text-grey-dark trend-font-300" style="text-align:left; font-size:12px; line-height: 5px; margin-bottom: 5px;">{{info.email}}</div>
+            <div class="trend-text-grey-dark trend-font-300" style="text-align:left; font-size:12px; line-height: 5px; margin-bottom: 5px;">
+                {% if info.phone != None %}
+                    {{info.phone}}
+                {% endif %}
+            </div>
+        </dl>
+        {% endfor %}
+    {% endif %}
+
+
+    {% if report_options.partner_contacts is not none and report_options.partner_name is not none %}
+        <div class="trend-text-red trend-font-700" style="text-align:left;padding-top: 5px;margin-bottom: 5px;"> {{report_options.partner_name | upper}}</div>
+        {% for  name,info in report_options.partner_contacts.items() %}
+        <dl style="padding-top:5px;">
+            <div class="trend-text-red trend-font-700" style="text-align:left;padding-top: 5px;margin-bottom: 5px;"> {{name}}</div>
+            <div class="trend-text-grey-dark trend-font-300" style="text-align:left; font-size:12px; line-height: 5px; margin-bottom: 5px;"> {{info.title}} </div>
+            <div class="trend-text-grey-dark trend-font-300" style="text-align:left; font-size:12px; line-height: 5px; margin-bottom: 5px;">{{info.email}}</div>
+            <div class="trend-text-grey-dark trend-font-300" style="text-align:left; font-size:12px; line-height: 5px; margin-bottom: 5px;">
+                {% if info.phone != None %}
+                    {{info.phone}}
+                {% endif %}
+            </div>
+        </dl>
+        {% endfor %}
+    {% endif %}
+
+
+
+    {% if report_options.trend_contacts is not none %}
+        <div class="trend-text-red 		 trend-font-700" style="text-align:left;padding-top: 5px;margin-bottom: 5px;"> TREND MICRO</div>
+        {% for  name,info in report_options.trend_contacts.items() %}
+        <dl style="padding-top:5px;">
+            <div class="trend-text-red 		 trend-font-700" style="text-align:left;padding-top: 5px;margin-bottom: 5px;"> {{name}}</div>
+            <div class="trend-text-grey-dark trend-font-300" style="text-align:left; font-size:12px; line-height: 5px; margin-bottom: 5px;"> {{info.title}} </div>
+            <div class="trend-text-grey-dark trend-font-300" style="text-align:left; font-size:12px; line-height: 5px; margin-bottom: 5px;">{{info.email}}</div>
+            <div class="trend-text-grey-dark trend-font-300" style="text-align:left; font-size:12px; line-height: 5px; margin-bottom: 5px;">
+                {% if info.phone != None %}
+                    {{info.phone}}
+                {% endif %}
+            </div>
+        </dl>
+        {% endfor %}
+    {% endif %}
+    <div style="position: relative;bottom: 50px;left: 0;page-break-inside: avoid;">
+        <div class="trend-text-red trend-font-300" style="font-size: 30px; padding-top: 50px;">
+            Document Conventions
+        </div>
+
+        {% if report_data.dict_modules_not_to_check.items() | length > 0 %}
+            <div class="trend-text-grey-dark">Modules not checked:</div>
+            <ul>
+            {% for v in report_data.dict_modules_not_to_check.values() %}
+                <li>
+                    <div class="trend-text-grey-dark trend-font-300" style="text-align:left; font-size:12px;">
+                        {{ v }}
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="trend-text-grey-dark" style="padding-top:10px;">Severity Classifications:</div>
+        <div style="font-size:12px;">
+            <div style="float:left; padding-top: 5px; padding-left: 7px"><i class="fa fa-circle severity_vulnerability" aria-hidden="true"></i></div>
+            <div class="trend-text-grey-ultradark" style="padding-left: 25px">Critical</div>
+            <div style="float:left; padding-top: 5px; padding-left: 7px"><i class="fa fa-circle severity_critical" aria-hidden="true"></i></div>
+            <div class="trend-text-grey-ultradark" style="padding-left: 25px">High</div>
+            <div style="float:left; padding-top: 5px; padding-left: 7px"><i class="fa fa-circle severity_medium" aria-hidden="true"></i></div>
+            <div class="trend-text-grey-ultradark" style="padding-left: 25px">Medium</div>
+            <div style="float:left; padding-top: 5px; padding-left: 7px"><i class="fa fa-circle severity_low" aria-hidden="true"></i></div>
+            <div class="trend-text-grey-ultradark" style="padding-left: 25px">Low</div>
+            <div style="float:left; padding-top: 5px; padding-left: 7px"><i class="fa fa-circle severity_enhancement" aria-hidden="true"></i></div>
+            <div class="trend-text-grey-ultradark" style="padding-left: 25px">Warning</div>
+        </div>
+
+        <BR/>
+        <div class="trend-text-grey-dark">Data Retention:</div>
+        <div class="row" style="margin:0;">
+            <div class="col-lg-12">
+                <div class="trend-text-grey-dark trend-font-200" style="padding-right:10px; font-size: 12px;">
+                    <p>All client specific data and logs as well as the extraction tool archive will be removed from the autonomous system after 45 days of the report creation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header>
+    <div class="trend-font-200 trend-text-grey-dark" style="float:left;">
+        <div>{{report_options.conformity_standard}}</div>
+
+    </div>
+    <div style="float:right;text-align:right;padding-top:10px;">
+        <img src="img/page_templates/header_trend_ball.jpg" style="width:80px;" />
+    </div>
+</header>

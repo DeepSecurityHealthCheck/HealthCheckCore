@@ -1,0 +1,53 @@
+---
+#This yaml has the object to define the values related to the FIREWALL
+#configuration specified per computer
+#expected accordingly the deep security best practice guide (v11.0).
+#Version 0.1 04-01-2019
+
+#The title is used for python scripts to call the information related to the
+#module. Please, do not change it.
+title: "firewall"
+descrption: ""
+firewall:
+  #It checks if firewall module is activated.
+  firewall.state:
+    weight: 10
+    operator: EQUAL
+    operand: "on"
+    description:
+      module: "firewall"
+      failure_item: "ファイアウォール: 無効"
+      text: >
+        "送受信トラフィックを制御するには、 ファイアウォール機能の有効化が必要です。 "
+#Out of Allowed Policy (Open Port) events can help quickly identify misconfigurations in rules.
+#Generatingcthese events for TCP, UDP, and ICMP advanced settings can assist with
+#building and adjusting your policy.
+  computer_settings.firewall_setting_events_out_of_allowed_policy_enabled.value:
+    weight: 6
+    operator: EQUAL
+    #Here will it be the status.
+    operand: "true" #String.
+    description:
+      module: "firewall"
+      failure_item: "『「ポリシーの許可外」のパケットのファイアウォールイベントを生成』を有効化"
+      text: "許可外ポリシー (解放ンポート) イベントを記録することは、 ルールの設定ミスを迅速に特定するのに役立ちます。 また、 TCPやUDP、 ICMPに関する高度な設定を施す場合には、 これらのイベントを生成することでポリシーの構築と調整に役立てることもできます。 (46ページ - DSBPG)"
+
+#Checks expected rules when the firewall module is on.
+  firewall.rule_ids:
+    weight: 6
+    operator: CONTAINS
+    #Here will it be the rules IDs.
+    operand: [4, 8, 11, 14, 24, 27, 48, 61, 64, 561, 567, 1961] #ICMP and ARP related rule IDs. #Integer.
+    description:
+      module: "firewall"
+      failure_item: "ICMPおよびARPの許可ルールの追加"
+      text: "ファイアーウォール機能を有効化する場合、 ICMPおよびARPの許可ルールの追加が必要です。 特に、 ARPはTCP/IP通信の基礎を形成する重要な通信のため、 ブロックしないことを強く推奨します。 (46ページ - DSBPG)"
+  
+  firewall.rule_ids:
+    weight: 7
+    operator: LENGTH_NOT_GREATER_THAN
+    operand:  300
+    description:
+      module: "firewall"
+      failure_item: "適用するルール数の上限は300まで"
+      text: "この機能では、 300以上のルールを適用すると、 対象コンピュータのパフォーマンスに悪影響を及ぼす可能性があります。 そのため、 適用するルールが300を下回るよう調整する必要があります。 (47ページ - DSBPG)"

@@ -1,0 +1,212 @@
+Windows Storage Server 2003: {end_date: 'October 11, 2011', release_date: 'May 5,
+    2003'}
+Windows Storage Server 2008 Basic: {end_date: 'January 13, 2015', release_date: 'July
+    19, 2009'}
+Windows Storage Server 2008 Basic 32-bit: {end_date: 'January 13, 2015', release_date: 'July
+    19, 2009'}
+Windows Storage Server 2008 Basic Embedded 32-bit: {end_date: 'January 13, 2015',
+  release_date: 'July 19, 2009'}
+Windows Storage Server 2008 Enterprise: {end_date: 'January 13, 2015', release_date: 'July
+    19, 2009'}
+Windows Storage Server 2008 Enterprise Embedded: {end_date: 'January 13, 2015', release_date: 'July
+    19, 2009'}
+Windows Storage Server 2008 R2: {end_date: 'January 13, 2015', release_date: 'December
+    20, 2010'}
+Windows Storage Server 2008 R2 Essentials: {end_date: 'January 13, 2015', release_date: 'June
+    28, 2011'}
+Windows Storage Server 2008 Standard: {end_date: 'January 13, 2015', release_date: 'July
+    19, 2009'}
+Windows Storage Server 2008 Standard Embedded: {end_date: 'January 13, 2015', release_date: 'July
+    19, 2009'}
+Windows Storage Server 2008 Workgroup: {end_date: 'January 13, 2015', release_date: 'July
+    19, 2009'}
+Windows Storage Server 2008 Workgroup Embedded: {end_date: 'January 13, 2015', release_date: 'July
+    19, 2009'}
+Windows Storage Server 2012 R2 Essentials: {end_date: 'September 10, 2018', release_date: 'September
+    25, 2014'}
+Windows Storage Server 2012 R2 Standard: {end_date: 'September 10, 2018', release_date: 'November
+    25, 2013'}
+Windows Storage Server 2012 R2 Workgroup: {end_date: 'October 9, 2018', release_date: 'November
+    25, 2013'}
+Windows Storage Server 2012 Standard: {end_date: 'October 9, 2018', release_date: 'October
+    30, 2012'}
+Windows Storage Server 2012 Workgroup: {end_date: 'October 9, 2018', release_date: 'October
+    30, 2012'}
+Windows Storage Server 2016: {end_date: 'January 11, 2022', release_date: 'October
+    15, 2016'}
+CentOS 5: {end_date: 'March 31, 2017', release_date: 'April 12, 2007'}
+CentOS 6: {end_date: 'November 30, 2020', release_date: 'July 10, 2011'}
+CentOS 7: {end_date: 'June 30, 2024', release_date: 'July 7, 2014'}
+Ubuntu Linux 10: {end_date: 'April 30, 2015', release_date: 'April 29, 2010'}
+Ubuntu Linux 12: {end_date: 'April 28, 2017', release_date: 'April 26, 2012'}
+Ubuntu Linux 13: {end_date: 'January 27, 2014', release_date: 'April 25, 2013'}
+Ubuntu Linux 14: {end_date: 'April, 2019', release_date: 'April 17, 2014'}
+Ubuntu Linux 15: {end_date: 'February 4, 2016', release_date: 'April 23, 2015'}
+Ubuntu Linux 16: {end_date: 'April, 2021', release_date: 'April 21, 2016'}
+Ubuntu Linux 17: {end_date: 'January, 2018', release_date: 'April 13, 2017'}
+Ubuntu Linux 18: {end_date: 'April, 2023', release_date: 'April 26, 2018'}
+Ubuntu Linux 4: {end_date: 'April 30, 2006', release_date: 'October 26, 2004'}
+Ubuntu Linux 5: {end_date: 'October 31, 2006', release_date: 'April 8, 2005'}
+Ubuntu Linux 6: {end_date: 'June 1, 2011', release_date: 'June 1, 2006'}
+Ubuntu Linux 7: {end_date: 'October 19, 2008', release_date: 'April 19, 2007'}
+Ubuntu Linux 8: {end_date: 'May 9, 2013', release_date: 'April 24, 2008'}
+Ubuntu Linux 9: {end_date: 'April 30, 2011', release_date: 'October 29, 2009'}
+Red Hat Enterprise 3: {end_date: 'October 31, 2010', release_date: 'October 23, 2003'}
+Red Hat Enterprise 4: {end_date: 'February 29, 2012', release_date: 'February 14, 2005'}
+Red Hat Enterprise 5: {end_date: 'March 31, 2017', release_date: 'March 15, 2007'}
+Red Hat Enterprise 6: {end_date: 'November 30, 2020', release_date: 'November 10, 2010'}
+Red Hat Enterprise 7: {end_date: 'June 30, 2024', release_date: 'June 10, 2014'}
+Windows MultiPoint Server 2010: {end_date: 'July 14, 2015', release_date: 'May 13,
+    2010'}
+Windows MultiPoint Server 2010 Academic: {end_date: 'July 14, 2015', release_date: 'May
+    13, 2010'}
+Windows MultiPoint Server 2011 Premium: {end_date: 'July 12, 2016', release_date: 'May
+    12, 2011'}
+Windows MultiPoint Server 2011 Standard: {end_date: 'July 12, 2016', release_date: 'May
+    12, 2011'}
+Windows MultiPoint Server 2012 Premium: {end_date: 'October 9, 2018', release_date: 'October
+    30, 2012'}
+Windows MultiPoint Server 2012 Standard: {end_date: 'October 9, 2018', release_date: 'October
+    30, 2012'}
+Windows MultiPoint Server 2016 Premium: {end_date: 'November 1, 2022', release_date: 'October
+    15, 2016'}
+Debian 1: {end_date: '-', release_date: 'May 17, 1996'}
+Debian 2: {end_date: '-', release_date: 'July 24, 1998'}
+Debian 3: {end_date: 'June 30, 2006', release_date: 'July 19, 2002'}
+Debian 4: {end_date: 'February 15, 2010', release_date: 'April 8, 2007'}
+Debian 5: {end_date: '-', release_date: 'July 2, 1997'}
+Debian 6: {end_date: 'May 31, 2015', release_date: 'February 6, 2011'}
+Debian 7: {end_date: 'April 26, 2016', release_date: 'May 4, 2013'}
+Debian 8: {end_date: 'June 6, 2018', release_date: 'April 25, 2015'}
+Debian 9: {end_date: 'January, 2020 ', release_date: 'June 17, 2017'}
+Linux Mint 1: {end_date: '-', release_date: 'August 27, 2006'}
+Linux Mint 10: {end_date: 'April, 2012', release_date: 'November 12, 2010'}
+Linux Mint 11: {end_date: 'October, 2012', release_date: 'May 26, 2011'}
+Linux Mint 12: {end_date: 'April, 2013', release_date: 'August 16, 2011'}
+Linux Mint 13: {end_date: 'April, 2017 ', release_date: 'May 23, 2012'}
+Linux Mint 14: {end_date: 'May, 2014', release_date: 'November 20, 2012'}
+Linux Mint 15: {end_date: 'January, 2014', release_date: 'May 29, 2013'}
+Linux Mint 16: {end_date: 'July, 2014', release_date: 'November 30, 2013'}
+Linux Mint 17: {end_date: 'April, 2019 ', release_date: 'May 31, 2014'}
+Linux Mint 17: {end_date: 'April, 2019 ', release_date: 'November 29, 2014'}
+Linux Mint 18: {end_date: 'April, 2021 ', release_date: 'June 30, 2016'}
+Linux Mint 19: {end_date: 'April, 2023 ', release_date: 'June 29, 2018'}
+Linux Mint 2: {end_date: 'April, 2008', release_date: 'November 13, 2006'}
+Linux Mint 3: {end_date: 'October, 2008', release_date: 'May 30, 2007'}
+Linux Mint 4: {end_date: 'April, 2009', release_date: 'October 15, 2007'}
+Linux Mint 5: {end_date: '-', release_date: 'July 2, 1997'}
+Linux Mint 6: {end_date: 'April, 2010', release_date: 'December 15, 2008'}
+Linux Mint 7: {end_date: 'October, 2010', release_date: 'May 26, 2009'}
+Linux Mint 8: {end_date: 'April, 2011', release_date: 'November 28, 2009'}
+Linux Mint 9: {end_date: 'April, 2013 ', release_date: 'May 18, 2010'}
+OpenBSD 1.1: {end_date: '-', release_date: 'October 18, 1995'}
+OpenBSD 1.2: {end_date: '-', release_date: 'July 1, 1996'}
+OpenBSD 2.0: {end_date: '-', release_date: 'October 1, 1996'}
+OpenBSD 2.1: {end_date: '-', release_date: 'June 1, 1997'}
+OpenBSD 2.2: {end_date: '-', release_date: 'December 1, 1997'}
+OpenBSD 2.3: {end_date: '-', release_date: 'May 19, 1998'}
+OpenBSD 2.4: {end_date: '-', release_date: 'December 1, 1998'}
+OpenBSD 2.5: {end_date: '-', release_date: 'May 19, 1999'}
+OpenBSD 2.6: {end_date: '-', release_date: 'December 1, 1999'}
+OpenBSD 2.7: {end_date: '-', release_date: 'June 15, 2000'}
+OpenBSD 2.8: {end_date: '-', release_date: 'December 1, 2000'}
+OpenBSD 2.9: {end_date: '-', release_date: 'June 1, 2001'}
+OpenBSD 3.0: {end_date: '-', release_date: 'December 1, 2001'}
+OpenBSD 3.1: {end_date: '-', release_date: 'May 19, 2002'}
+OpenBSD 3.2: {end_date: '-', release_date: 'November 1, 2002'}
+OpenBSD 3.3: {end_date: '-', release_date: 'May 1, 2003'}
+OpenBSD 3.4: {end_date: '-', release_date: 'November 1, 2003'}
+OpenBSD 3.5: {end_date: '-', release_date: 'May 1, 2004'}
+OpenBSD 3.6: {end_date: '-', release_date: 'November 1, 2004'}
+OpenBSD 3.7: {end_date: '-', release_date: 'May 19, 2005'}
+OpenBSD 3.8: {end_date: 'November 1, 2006', release_date: 'November 1, 2005'}
+OpenBSD 3.9: {end_date: 'May 1, 2007', release_date: 'May 1, 2006'}
+OpenBSD 4.0: {end_date: 'November 1, 2007', release_date: 'November 1, 2006'}
+OpenBSD 4.1: {end_date: 'May 1, 2008', release_date: 'May 1, 2007'}
+OpenBSD 4.2: {end_date: 'November 1, 2008', release_date: 'November 1, 2007'}
+OpenBSD 4.3: {end_date: 'May 1, 2009', release_date: 'May 1, 2008'}
+OpenBSD 4.4: {end_date: 'October 18, 2009', release_date: 'November 1, 2008'}
+OpenBSD 4.5: {end_date: 'May 19, 2010', release_date: 'May 1, 2009'}
+OpenBSD 4.6: {end_date: 'November 1, 2010', release_date: 'October 18, 2009'}
+OpenBSD 4.7: {end_date: 'May 1, 2011', release_date: 'May 19, 2010'}
+OpenBSD 4.8: {end_date: 'November 1, 2011', release_date: 'November 1, 2010'}
+OpenBSD 4.9: {end_date: 'May 1, 2012', release_date: 'May 1, 2011'}
+OpenBSD 5.0: {end_date: 'November 1, 2012', release_date: 'November 1, 2011'}
+OpenBSD 5.1: {end_date: 'May 1, 2014', release_date: 'May 1, 2012'}
+OpenBSD 5.2: {end_date: 'November 1, 2013', release_date: 'November 1, 2012'}
+OpenBSD 5.3: {end_date: 'May 1, 2014', release_date: 'May 1, 2013'}
+OpenBSD 5.4: {end_date: 'November 1, 2014', release_date: 'November 1, 2013'}
+OpenBSD 5.5: {end_date: 'May 1, 2015', release_date: 'May 1, 2014'}
+OpenBSD 5.6: {end_date: 'October 18, 2015', release_date: 'November 1, 2014'}
+OpenBSD 5.7: {end_date: 'May 29, 2016', release_date: 'May 1, 2015'}
+OpenBSD 5.8: {end_date: 'September 1, 2016', release_date: 'November 18, 2015'}
+OpenBSD 5.9: {end_date: 'April 11, 2017', release_date: 'March 29, 2016'}
+OpenBSD 6.0: {end_date: '-', release_date: 'September 1, 2016'}
+OpenBSD 6.1: {end_date: '-', release_date: 'April 11, 2017'}
+FreeBSD 1.0: {end_date: '-', release_date: 'October 1, 1993'}
+FreeBSD 1.1: {end_date: '-', release_date: 'May, 1994'}
+FreeBSD 10.0: {end_date: 'February 28, 2015', release_date: 'January 20, 2014'}
+FreeBSD 10.1: {end_date: 'December 31, 2016', release_date: 'November 14, 2014'}
+FreeBSD 10.2: {end_date: 'December 31, 2016', release_date: 'August 13, 2015'}
+FreeBSD 10.3: {end_date: 'April 30, 2018', release_date: 'April 4, 2016'}
+FreeBSD 10.4: {end_date: 'April 30, 2018', release_date: 'October 3, 2017'}
+FreeBSD 11.0: {end_date: 'January 10, 2017', release_date: 'October 10, 2016'}
+FreeBSD 11.1: {end_date: '-', release_date: 'July 26, 2017'}
+FreeBSD 2.0: {end_date: '-', release_date: 'November 22, 1994'}
+FreeBSD 2.1: {end_date: '-', release_date: 'November 19, 1995'}
+FreeBSD 2.2: {end_date: '-', release_date: 'March, 1997'}
+FreeBSD 3.0: {end_date: '-', release_date: 'October 16, 1998'}
+FreeBSD 3.1: {end_date: '-', release_date: 'February 15, 1999'}
+FreeBSD 3.2: {end_date: '-', release_date: 'May 17, 1999'}
+FreeBSD 3.3: {end_date: '-', release_date: 'September 17, 1999'}
+FreeBSD 3.4: {end_date: '-', release_date: 'December 20, 1999'}
+FreeBSD 3.5: {end_date: '-', release_date: 'June 24, 2000'}
+FreeBSD 4.0: {end_date: '-', release_date: 'March 14, 2000'}
+FreeBSD 4.1: {end_date: '-', release_date: 'July 27, 2000'}
+FreeBSD 4.10: {end_date: 'May, 2006', release_date: 'May 27, 2004'}
+FreeBSD 4.11: {end_date: 'January 31, 2007', release_date: 'January 25, 2005'}
+FreeBSD 4.2: {end_date: '-', release_date: 'November 21, 2000'}
+FreeBSD 4.3: {end_date: '-', release_date: 'April 20, 2001'}
+FreeBSD 4.4: {end_date: '-', release_date: 'September 20, 2001'}
+FreeBSD 4.5: {end_date: '-', release_date: 'January 29, 2002'}
+FreeBSD 4.6: {end_date: '-', release_date: 'June 15, 2002'}
+FreeBSD 4.7: {end_date: '-', release_date: 'October 10, 2002'}
+FreeBSD 4.8: {end_date: 'March 31, 2004', release_date: 'April 3, 2003'}
+FreeBSD 4.9: {end_date: '-', release_date: 'October 28, 2003'}
+FreeBSD 5.0: {end_date: 'June 30, 2003', release_date: 'January 19, 2003'}
+FreeBSD 5.1: {end_date: 'February, 2004', release_date: 'June 9, 2003'}
+FreeBSD 5.2: {end_date: '-', release_date: 'January 12, 2004'}
+FreeBSD 5.3: {end_date: 'October 31, 2006', release_date: 'November 6, 2004'}
+FreeBSD 5.4: {end_date: 'October 31, 2006', release_date: 'May 9, 2005'}
+FreeBSD 5.5: {end_date: 'May 31, 2008', release_date: 'May 25, 2006'}
+FreeBSD 6.0: {end_date: 'January 31, 2007', release_date: 'November 4, 2005'}
+FreeBSD 6.1: {end_date: 'May 31, 2008', release_date: 'May 9, 2006'}
+FreeBSD 6.2: {end_date: 'May 1, 2008', release_date: 'January 15, 2007'}
+FreeBSD 6.3: {end_date: 'January 31, 2010', release_date: 'January 18, 2008'}
+FreeBSD 6.4: {end_date: 'November 30, 2010', release_date: 'November 28, 2008'}
+FreeBSD 7.0: {end_date: 'April 30, 2009', release_date: 'February 27, 2008'}
+FreeBSD 7.1: {end_date: 'February 28, 2011', release_date: 'January 4, 2009'}
+FreeBSD 7.2: {end_date: 'June 30, 2010', release_date: 'May 4, 2009'}
+FreeBSD 7.3: {end_date: 'March 31, 2012', release_date: 'March 23, 2010'}
+FreeBSD 7.4: {end_date: 'February 28, 2013', release_date: 'February 24, 2011'}
+FreeBSD 8.0: {end_date: 'November 30, 2010', release_date: 'November 25, 2009'}
+FreeBSD 8.1: {end_date: 'July 31, 2012', release_date: 'July 23, 2010'}
+FreeBSD 8.2: {end_date: 'July 31, 2012', release_date: 'February 24, 2011'}
+FreeBSD 8.3: {end_date: 'April 30, 2014', release_date: 'April 18, 2012'}
+FreeBSD 8.4: {end_date: 'August 1, 2015', release_date: 'June 9, 2013'}
+FreeBSD 9.0: {end_date: 'March 31, 2013', release_date: 'January 10, 2012'}
+FreeBSD 9.1: {end_date: 'January 3, 2015', release_date: 'December 30, 2012'}
+FreeBSD 9.2: {end_date: 'December 31, 2014', release_date: 'September 30, 2013'}
+FreeBSD 9.3: {end_date: 'December 31, 2016', release_date: 'July 16, 2014'}
+Windows Server 2000: {end_date: 'June 30, 2005', release_date: 'March 31, 2000'}
+Windows Server 2003: {end_date: 'April 10, 2007', release_date: 'May 28, 2003'}
+Windows Server 2008 Small Business Server Standard: {end_date: 'January 14, 2020', release_date: 'November
+    21, 2008'}
+Windows Server 2008 R2: {end_date: 'January 14, 2020', release_date: 'November
+    21, 2008'}
+Windows Server 2012: {end_date: 'October 9, 2018', release_date: 'October
+    30, 2012'}
+Windows Server 2012 R2: {end_date: 'September 9, 2018', release_date: 'November
+    25, 2013'}
+Windows Server 2016: {end_date: 'January 11, 2022', release_date: 'October
+    15, 2016'}

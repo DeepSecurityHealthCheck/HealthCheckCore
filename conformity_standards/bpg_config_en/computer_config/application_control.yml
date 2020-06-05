@@ -1,0 +1,27 @@
+---
+#This yaml has the object to define the values related to the APPLICATION CONTROL
+#configuration that is specified per computer
+#expected accordingly the deep security best practice guide (v11.0).
+#Version 0.1 04-01-2019
+
+#The title is used for python scripts to call the information related to the
+#module. Please, do not change it.
+title: "application_control"
+descrption: ""
+application_control:
+  #It checks if application control module is activated.
+  application_control.state:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 10
+    #It has six possible operators. For this comparison, it is equal.
+    operator: EQUAL
+    operand: "on"
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "application_control"
+      failure_item: "State is off"
+      text: "It's an essential module to avoid the execution of unauthorized applications."
+...

@@ -1,0 +1,162 @@
+<div class="page">
+<div class="trend-text-red trend-font-300" style="font-size: 30px; padding-top: 10px;">
+    <a name="page06">3. ベストプラクティスとの適合状況</a>
+</div>
+
+<div class="row" style="margin:0;">
+    <div class="col-lg-11">
+        <div class="trend-text-red trend-font-200" style="font-size: 18px; margin-top: 8px;">
+            有効なコンピューターの割合:
+            <span class="trend-font-300">
+              {% if (100 * (report_data.num_managed_computers / report_data.num_computers)) | int >= 80 %}
+              高
+              {% else %}
+                                  低
+              {% endif %}
+            </span>
+        </div>
+    </div>
+
+      {% if (100 * (report_data.num_managed_computers / report_data.num_computers)) | int >= 80 %}
+       <div class="col-lg-1 trend-text-green" style="font-size: 22px; padding-top: 10px;">
+        <div><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+        </div>
+      {% else %}
+      <div class="col-lg-1 trend-text-red" style="font-size: 22px; padding-top: 10px;">
+        <div><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></div>
+      </div>
+        {% endif %}
+
+</div>
+<div class="row" style="margin:0;">
+    <div class="col-lg-10">
+        <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 11px; word-wrap: break-word;">
+            <p>
+              {% if (100 * (report_data.num_managed_computers / report_data.num_computers)) | int >= 80 %}
+              Deep Security Managerに登録されている多く(80%以上)のコンピュータは、 Deep Security Agentがインストール・有効化されており、 設定内容に基づいて適切に保護されています。 
+              {% else %}
+              Deep Security Managerに登録されている多く(20%以上)のコンピュータは、 Deep Security Agentがインストールされていない、 もしくは有効化できていないため、 適切な保護ができていません。 
+              {% endif %}
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- SCHEDULED TASKS -->
+
+<div class="row" style="margin:0;">
+
+    <div class="col-lg-11">
+        <div class="trend-text-red trend-font-200" style="font-size: 18px; margin-top: 8px;">
+            スケジュールタスク :
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin:0;">
+    <div class="col-lg-10">
+        <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 11px; word-wrap: break-word;">
+        <p>
+            現在のバージョンのDeep Security SDKはスマートフォルダーを利用できません。 もしスマートフォルダを利用している場合、 下記の内容は実際の環境と異なる場合があります。 また、 コンピュータを以下の算出対象に含めるには、 完全にベストプラクティスに準拠したスケジュールタスクに設定する必要があります。 
+        </p> 
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin:0;">
+    <div class="col-lg-10">
+        <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 11px; text-align: justify;">
+
+            <table>
+                <tr>
+                    <td class="trend-text-grey-dark trend-font-700">スケジュールタスクの種類</td>
+                    <td class="trend-text-grey-dark trend-font-700" style="text-align: center">コンピューターのカバー範囲</td>
+                    <td class="trend-text-grey-dark trend-font-700">状態</td>
+                </tr>
+                
+                {%for key,value in report_data["scheduled_tasks_results"].items() %}
+                <tr>
+                    <td>{{report_data["scheduled_tasks_results"][key]["checklist_description"]}}</td>
+                    <td style="text-align: center"> {{ report_data["scheduled_tasks_results"][key]["computers_in_filter"] | length }} /
+                    {{report_data["num_computers"]}}</td>
+                    
+                    <td style=" text-align: center" >
+                        {% if (report_data["scheduled_tasks_results"][key]["computers_in_filter"] | length)/report_data["num_computers"] >= 0.8%} 
+                            <div class="col-lg-1 trend-text-green" style="font-size: 22px; padding-top: 0px;">
+                                <div><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                            </div>
+                        {% else %}
+                            <div class="col-lg-1 trend-text-red" style="font-size: 22px; padding-top: 0px;">
+                                <div><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></div>
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+
+        <div class="trend-text-grey-dark trend-font-300" style="font-size: 10px; color: #666"> </div>
+    </div>
+
+</div>
+<BR/>
+
+<!------------------------------>
+
+
+
+<div class="row" style="margin:0;">
+    <div class="col-lg-11">
+        <div class="trend-text-red trend-font-200" style="font-size: 18px; margin-top: 8px;">
+            Deep Security Agentのバージョン配布:
+            <span class="trend-font-300">
+              {% if report_data.agent_release | length > 1%}
+              Mixed
+              {% else %}
+              Homogeneous
+              {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin:0;">
+    <div class="col-lg-10">
+        <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 11px; word-wrap: break-word;">
+            <p>
+              {% if report_data.agent_release | length > 1%}
+              貴社環境にて、 複数のDeep Security Agentのバージョンを検出しました。 トレンドマイクロはマルウェアの脅威に対抗するために、 全てのDeep Security Agentを最新バージョンにアップグレードすることを推奨します。 
+              {% else %}
+              貴社環境における全てのエージェントは同じバージョンを利用しています。 さらにセキュリティを向上させるには、 各エージェントが適切にアップデートがされているかをご確認ください。 
+              {% endif %}
+              <br/>また、 Feature releaseは、 新機能をいち早くご利用いただくための暫定リリースであり、 <span class="trend-text-grey-ultradark trend-font-700">次のメジャーリリースから6ヶ月のみサポート</span>されることにご注意ください。 <a href="https://help.deepsecurity.trendmicro.com/feature-releases.html" target="_blank">(詳細情報はこちら)</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin:0;">
+    <div class="col-lg-10">
+        <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 12px; text-align: justify;">
+
+            <table>
+                <tr>
+                    <td class="trend-text-grey-dark trend-font-700">Version</td>
+                    <td class="trend-text-grey-dark trend-font-700" style="text-align: center">有効なエージェント</td>
+                </tr>
+                {% for version, info in report_data.agent_release %}
+                <tr>
+                    <td>{{version}}</td>
+                    <td style="text-align: center">{{info.count}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="trend-text-grey-dark trend-font-300" style="font-size: 10px; color: #666"> </div>
+    </div>
+
+</div>
+<BR/>
+</div>

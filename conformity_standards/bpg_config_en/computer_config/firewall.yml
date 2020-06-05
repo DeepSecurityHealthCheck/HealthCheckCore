@@ -1,0 +1,59 @@
+---
+#This yaml has the object to define the values related to the FIREWALL
+#configuration specified per computer
+#expected accordingly the deep security best practice guide (v11.0).
+#Version 0.1 04-01-2019
+
+#The title is used for python scripts to call the information related to the
+#module. Please, do not change it.
+title: "firewall"
+descrption: ""
+firewall:
+  #It checks if firewall module is activated.
+  firewall.state:
+    weight: 10
+    operator: EQUAL
+    operand: "on"
+    description:
+      module: "firewall"
+      failure_item: "State is off"
+      text: >
+        "It's necessary to activate firewall module for controlling incoming
+        and outgoing traffic."
+#Out of Allowed Policy (Open Port) events can help quickly identify misconfigurations in rules.
+#Generatingcthese events for TCP, UDP, and ICMP advanced settings can assist with
+#building and adjusting your policy.
+  computer_settings.firewall_setting_events_out_of_allowed_policy_enabled.value:
+    weight: 6
+    operator: EQUAL
+    #Here will it be the status.
+    operand: "true" #String.
+    description:
+      module: "firewall"
+      failure_item: "Enable events for packets 'out of allowed policy'"
+      text: >
+        "Out of Allowed Policy (Open Port) events can help quickly identify
+        misconfigurations in rules. (Page 47 - DSBPG)"
+#Checks expected rules when the firewall module is on.
+  firewall.rule_ids:
+    weight: 6
+    operator: CONTAINS
+    #Here will it be the rules IDs.
+    operand: [4, 8, 11, 14, 24, 27, 48, 61, 64, 561, 567, 1961] #ICMP and ARP related rule IDs. #Integer.
+    description:
+      module: "firewall"
+      failure_item: "Add Rules related to ICMP and ARP"
+      text: >
+        "Firewall expected rules when the firewall module is enabled. (Page 46, 47 - DSBPG)"
+  
+  firewall.rule_ids:
+    weight: 7
+    operator: LENGTH_NOT_GREATER_THAN
+    operand:  300
+    description:
+      module: "firewall"
+      failure_item: "The number of applied rules should be below 300"
+      text: >
+        "Assigning more than 300 rules can negatively affect the systems's
+        performance (Page 47 - DSBPG)"        
+...

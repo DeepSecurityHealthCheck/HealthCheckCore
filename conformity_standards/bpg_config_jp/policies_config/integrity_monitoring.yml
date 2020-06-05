@@ -1,0 +1,43 @@
+---
+#This yaml has the object to define the values related to the INTEGRITY MONITORING
+#configuration that is specified per computer
+#expected accordingly the deep security best practice guide (v11.0).
+#Version 0.1 04-01-2019
+
+#The title is used for python scripts to call the information related to the
+#module. Please, do not change it.
+title: "integrity_monitoring"
+descrption: ""
+integrity_monitoring:
+  #It checks if integrity monitoring module is activated.
+  integrity_monitoring.state:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 10
+    #It has six possible operators. For this comparison, it is not equal.
+    operator: NOT_EQUAL
+    operand: "off"
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "integrity_monitoring"
+      failure_item: "変更監視 : 無効 (推奨：有効) "
+      text: "この機能によって、 対象コンピュータ （サーバ）のOSやアプリケーションのファイル、 ディレクトリをきめ細やかに監視することができます。 この機能によって、 各データについて整合性が保たれていることを担保することが可能になります。 "
+  #Automatically implement Integrity Monitoring Rule Recommendations (when possible)
+  policy_settings.integrity_monitoring_setting_auto_apply_recommendations_enabled.value:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 6
+    #It has six possible operators. For this comparison, it is equal.
+    operator: EQUAL
+    #It is the recommended value for this topic in the DS-BPG.
+    operand: "Yes" #Yes or No
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "integrity_monitoring"
+      failure_item: "変更監視ルールの推奨設定の自動的に適用：有効（推奨：無効）"
+      text: "変更監視の推奨検索（推奨設定）については、 各コンピュータに直接設定を適用するのではなく、 ポリシーに対して割り当てる運用を推奨します。 また、 事前検証せずに、 変更監視ルールを自動的に適用する運用は推奨していません。 （60ページ - DSBPG）"
+...

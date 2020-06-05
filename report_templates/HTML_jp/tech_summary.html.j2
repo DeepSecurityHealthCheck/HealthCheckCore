@@ -1,0 +1,315 @@
+<div class="page" style="margin-top: -30px">
+  <header>
+    <div style="float:right;text-align:right;padding-top:10px;">
+      <img src="img/page_templates/header_trend_ball.jpg" style="width:80px;" />
+    </div>
+  </header>
+
+  <div class="trend-text-red trend-font-300" style="font-size: 30px;">
+    設定状況
+  </div>
+
+
+  <div class="row" style="margin:0">
+  <!--
+    <div class="trend-font-300 trend-text-grey-ultradark" style="visibility:hidden">
+            全体の評価結果:
+            <span class="trend-text-grey-dark trend-font-300" style="font-size:14px">
+                {{report_options.customer_host}}
+            </span><BR />
+            Deep Securityサーバ:
+            <span class="trend-text-grey-dark trend-font-300" style="font-size:14px">
+                <b> [INSERT DS VERSION DESCRITIVE] </b>
+                <span style="font-size:12px">(Release date <b>[INSERT DS VER REL. DATE]</b>)</span>
+            </span>
+        </div>
+    -->
+
+    <div class="trend-text-grey-dark trend-font-300" style="font-size: 10px; word-wrap: break-word;">
+      <p>この概要は、 <span class="trend-text-grey-ultradark trend-font-700">{{report_options.conformity_standard}}</span>の推奨値と比較した結果、 貴社のDeep Security構成の現状を確認することができます。 詳細な対応手順や業務影響、 参考情報は、 このレポートの各セクションに記載しています。 </p>
+    </div>
+  </div>
+  
+
+  <!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ HIDE NON USED PLATAFORMS //////////////////////////// -->
+  <div class="row" style="margin:0;">
+    <div class="trend-text-red trend-font-300" style="font-size: 14px; margin-top: 10px;">
+      <div class="col-lg-11">
+        環境概要
+        <div class="trend-text-grey-dark trend-font-300"
+        style="padding-right:10px; font-size: 10px; text-align: justify;">
+
+        <table>
+          <tr class="exec_summary">
+            <td class="trend-text-grey-dark trend-font-700" style="text-align: left">プラットフォーム</td>
+                            <td class="trend-text-grey-dark trend-font-700" style="text-align: center">正常</td>
+                            <td class="trend-text-grey-dark trend-font-700" style="text-align: center">警告</td>
+                            <td class="trend-text-grey-dark trend-font-700" style="text-align: center">未対応</td>
+                            <td class="trend-text-grey-dark trend-font-700" style="text-align: center">重大</td>
+                            <td class="trend-text-grey-dark trend-font-700" style="text-align: center;border-left: solid 1px #ddd;border-right: solid 1px #ddd;">未対応</td>
+                            <td class="trend-text-grey-dark trend-font-700" style="text-align: center">合計</td>
+                            <td class="trend-text-grey-dark trend-font-700" style="text-align: center">台数比率</td>
+                            <td class="trend-text-grey-dark trend-font-700" style="text-align: center">適合率</td>
+                            <td class="trend-text-grey-dark trend-font-700" style="text-align: left; padding-right:5px"></td>
+          </tr>
+          {% for key,value in report_data.agent_deployment_scenarios.items() %}
+          {% if value.num_computers_scenario > 0 %}
+          <tr class="exec_summary">
+            <td style="text-align: left">{{value.name}}</td>
+            <td style="text-align: center">{{value.status_count['active']}}</td>
+            <td style="text-align: center">{{value.status_count['warning']}}</td>
+            <td style="text-align: center">{{value.status_count['not-supported']}}</td>
+            <td style="text-align: center">{{value.status_count['error']}}</td>
+            <td style="text-align: center;border-left: solid 1px #ddd;border-right: solid 1px #ddd;">{{value.status_count['inactive']}}</td>
+            <td style="text-align: center">{{value.num_computers_scenario}}</td>
+            <td style="text-align: center">{{value.environment_percentage }} %</td>
+            <td style="text-align: center">{{value.result.conformity_rate | int}} %</td>
+            {% if value.result.conformity_rate < 24 %}
+              <td style="text-align: left"><i class="fa fa-circle severity_vulnerability" aria-hidden="true"></i></td>
+            {% else %}
+              {% if value.result.conformity_rate < 49 %}
+                <td style="text-align: left"><i class="fa fa-circle severity_critical" aria-hidden="true"></i></td>
+              {% else %}
+                {% if value.result.conformity_rate < 75 %}
+                  <td style="text-align: left"><i class="fa fa-circle severity_medium" aria-hidden="true"></i></td>
+                {% else %}
+                  {% if value.result.conformity_rate < 100 %}
+                    <td style="text-align: left"><i class="fa fa-circle severity_low" aria-hidden="true"></i></td>
+                  {% else %}
+                  
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+            
+            <!-- SELECT SEVERITY BALL !!!!! severity_vulnerability severity_critical severity_medium severity_low severity_enhancement-->
+          </tr>
+          {% endif %}
+          {% endfor %}
+          <tr class="border_total">
+            <td style="text-align: left"></td>
+            <td style="text-align: center">{{report_data.overall_agent_deployment.status_count['active']}}</td>
+            <td style="text-align: center">{{report_data.overall_agent_deployment.status_count['warning']}}</td>
+            <td style="text-align: center">{{report_data.overall_agent_deployment.status_count['not-supported']}}</td>
+            <td style="text-align: center">{{report_data.overall_agent_deployment.status_count['error']}}</td>
+            <td style="text-align: center;border-left: solid 1px #ddd;border-right: solid 1px #ddd;">{{report_data.overall_agent_deployment.status_count['inactive']}}</td>
+            <td style="text-align: center">{{report_data.overall_agent_deployment.num_computers_scenario}}</td>
+            <td style="text-align: center"></td>
+            <td style="text-align: center">{{report_data.module_results['total'].conformity_rate | int}} %</td>
+            <td style="text-align: center"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div><BR />
+
+<div class="row" style="margin:0;">
+  <div class="trend-text-red trend-font-300" style="font-size: 14px; margin-top: 10px;">
+    <div class="col-lg-11">
+      上位のオペレーティングシステム
+      <div class="trend-text-grey-dark trend-font-300"
+      style="padding-right:10px; font-size: 10px; text-align: justify;">
+      <table>
+        <tr class="exec_summary">
+          <td class="trend-text-grey-dark trend-font-700">OS</td>
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: center">有効エージェント数</td>
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: center">OSリリース日</td>
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: center">EOL日</td>
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: center">比率</td>
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: left; padding-right:5px"></td>
+        </tr>
+        {% for os_name, os_report_data in report_data.agent_operating_system.items() %}
+        <tr class="exec_summary">
+          <td>{{os_name}}</td>
+          <td style=" text-align: center">{{ os_report_data['count']}}</td>
+          <td style="text-align: center"> {{os_report_data['release']['release_date']}}</td>
+          {% if os_report_data['release'].get('extended_support', None) != None %}
+          <td style=" text-align: center">{{os_report_data['release']['extended_support']}}</td>
+          {% else %}
+          <td style=" text-align: center">{{os_report_data['release']['end_date']}}</td>
+          {% endif %}
+          <!-- <td style=" text-align: center">{{os_report_data['percentage'] | int}} %</td> -->
+          <td style=" text-align: center">{{ (100 * (os_report_data['count'] / report_data.num_managed_computers)) | round(2,'common') }} %</td>
+          <td style="text-align: center"></td>
+        </tr>
+        {% endfor %}
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+</div><BR />
+
+<div class="row" style="margin:0;">
+  <div class="trend-text-red trend-font-300" style="font-size: 14px; margin-top: 10px;">
+    <div class="col-lg-11">
+    エージェントの適合スコア分布
+      <div class="trend-text-grey-dark trend-font-300"
+      style="padding-right:10px; font-size: 10px; text-align: justify;">
+      <table>
+        <tr class="exec_summary">
+          <td class="trend-text-grey-dark trend-font-700">有効なエージェントの合計</td>
+          {% for key,value in report_options.agent_average_conformity_slices.items() %}
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: center">{{key}} ({{value.range[0]}} - {{value.range[1]}}%)</td>
+          {% endfor %}
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: left; padding-right:5px"></td>
+        </tr>
+
+        <tr class="exec_summary">
+          <td>{{report_data.num_managed_computers}}</td>
+          {% for key,value in report_options.agent_average_conformity_slices.items() %}
+          <td style="text-align: center">{{value.count}} ({{value.percent | round(2,'common')}}%)</td> <!-- 50% (300) -->
+          {% endfor %}
+          <td style="text-align: center"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+</div><BR />
+
+<div class="row" style="margin:0;">
+  <div class="trend-text-red trend-font-300" style="font-size: 14px; margin-top: 10px;">
+    <div class="col-lg-11">
+      エージェントのバージョン分布
+      <div class="trend-text-grey-dark trend-font-300"
+      style="padding-right:10px; font-size: 10px; text-align: justify;">
+      <table>
+        <tr class="exec_summary">
+          <td class="trend-text-grey-dark trend-font-700">バージョン</td>
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: center">有効エージェント数</td>
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: center">比率</td>
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: left; padding-right:5px"></td>
+        </tr>
+
+        {% for version, values in report_data.agent_release %}
+        <tr class="exec_summary">
+
+          <td>{{version}}</td>
+          <td style=" text-align: center">{{values['count'] }}</td>
+          <td style="text-align: center">{{values['percentage'] |  round(2,'common') }}%</td>
+
+          <td style="text-align: center"></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+</div><BR />
+<BR />
+</div>
+
+<div class="page" style="margin-top:-30px">
+
+<div class="row" style="margin:0; page-break-inside: avoid; ">  <!-- page-break-before: always; -->
+  <div class="trend-text-red trend-font-300" style="font-size: 14px; margin-top: 10px;">
+    <div class="col-lg-11">
+      セキュリティ機能別の適合率
+
+      <div class="trend-text-grey-ultradark trend-font-700" style="text-align: right; font-size: 10px; margin-top: 7px;">Managed Computers: {{report_data.num_managed_computers}}</div>
+
+
+      <div class="trend-text-grey-dark trend-font-300"
+      style="padding-right:10px; font-size: 10px; text-align: justify;">
+      <table>
+
+        <tr class="exec_summary">
+          <td class="trend-text-grey-dark trend-font-700">セキュリティ機能名</td>
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: center;">有効数</td>
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: center; width: 175px">適合スコア</td>
+            <td class="trend-text-grey-dark trend-font-700"
+            style="text-align: center; padding-right:5px; width: 25px">%</td>
+            <!-- <td class="trend-text-grey-dark trend-font-700" style="text-align: center; width: 175px">Fully Conformant
+            Agents</td>
+            <td class="trend-text-grey-dark trend-font-700"
+            style="text-align: center; padding-right:1px; width: 25px">%</td> -->
+          </tr>
+
+          {% for key,value in report_data.module_results.items() %}
+          {% if key != "total" %}
+          <tr class="exec_summary">
+            <td>{{report_options.pretty_module_names[key]}}</td>
+            <td style="text-align: center;">{{report_data.module_deployment_count[key]}}</td>
+            <td style=" text-align: right; width: 175px">
+              <div class="clearfix">
+                <div class='exec-compliance-non-success' style='width:100%; float:right;'></div>
+                <div class='exec-compliance-success' style='width: {{value.conformity_rate}}%; float:left;'></div> <!-- this Width is the progress -->
+              </div>
+            </td>
+            <td style="text-align: right; padding-right:5px; width: 25px">
+              {{value.conformity_rate | int }}
+            </td>
+        </tr>
+        {% endif%}
+        {% endfor %}
+  </table>
+      <!-- Key findings -->
+      <br/><br/>
+
+
+
+
+</div>
+</div>
+</div>
+
+<BR />
+</div>
+<BR />
+
+<div class="row" style="margin:0; page-break-inside: avoid; ">  <!-- page-break-before: always; -->
+  <div class="trend-text-red trend-font-300" style="font-size: 14px; margin-top: 10px;">
+    <div class="col-lg-11">
+      適合率の低いコンピュータ - トップ20
+
+      <div class="trend-text-grey-ultradark trend-font-700" style="text-align: right; font-size: 10px; margin-top: 7px;">エージェントが有効なコンピュータ: {{report_data.num_managed_computers}}</div>
+
+
+      <div class="trend-text-grey-dark trend-font-300"
+      style="padding-right:10px; font-size: 10px; text-align: justify;">
+      <table>
+
+        <tr class="exec_summary">
+          <td class="trend-text-grey-dark trend-font-700">ホスト名</td>
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: center;">適合しない項目</td>
+          <td class="trend-text-grey-dark trend-font-700" style="text-align: center; width: 175px">適合スコア</td>
+            <td class="trend-text-grey-dark trend-font-700"
+            style="text-align: center; padding-right:5px; width: 25px">%</td>
+            <!-- <td class="trend-text-grey-dark trend-font-700" style="text-align: center; width: 175px">Fully Conformant
+            Agents</td>
+            <td class="trend-text-grey-dark trend-font-700"
+            style="text-align: center; padding-right:1px; width: 25px">%</td> -->
+          </tr>
+
+          {% for id, computer in report_data.least_conforming_computers %}
+          <tr class="exec_summary">
+            <td>{{computer.host_name}}</td>
+            <td style="text-align: center;">{{computer.total.failed_items | length}}</td>
+            <td style=" text-align: right; width: 175px">
+              <div class="clearfix">
+                <div class='exec-compliance-non-success' style='width:100%; float:right;'></div>
+                <div class='exec-compliance-success' style='width: {{computer.total.conformity_rate}}%; float:left;'></div> <!-- this Width is the progress -->
+              </div>
+            </td>
+            <td style="text-align: right; padding-right:5px; width: 25px">
+              {{computer.total.conformity_rate | int}}
+            </td>
+        </tr>
+        {% endfor %}
+  </table>
+      <!-- Key findings -->
+      <br/><br/>
+
+
+
+
+</div>
+</div>
+</div>
+
+<BR />
+</div>
+
+</div>

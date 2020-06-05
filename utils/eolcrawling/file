@@ -1,0 +1,19 @@
+April 8, 2007: {end_date: Debian 3.1, start_date: 'February 15, 2010'}
+August 15, 2000: {end_date: Debian 2.1, start_date: 'June 30, 2003'}
+Debian 1.0: {end_date: 'May 17, 1996', start_date: Buzz}
+Debian 1.2: {end_date: 'December 12, 1996', start_date: Rex}
+Debian 1.3: {end_date: 'July 2, 1997', start_date: Bo}
+Debian 2.0: {end_date: 'July 24, 1998', start_date: Hamm}
+Debian 3.0: {end_date: 'July 19, 2002', start_date: Woody}
+Debian 5.0: {end_date: 'February 14, 2009', start_date: Lenny}
+Debian 8.0: {end_date: 'April 25, 2015', start_date: Jessie}
+Debian 9.0: {end_date: 'June 17, 2017', start_date: Stretch}
+February 6, 2011: {end_date: 'February 29, 2016', start_date: 'May 31, 2015'}
+February 6, 2012: {end_date: Etch, start_date: Debian 4.0}
+'January, 2020 ': {end_date: 'January, 2022', start_date: ' '}
+June 30, 2006: {end_date: Potato, start_date: Debian 2.2}
+June 6, 2018: {end_date: Debian 7.0, start_date: 'June 6, 2020'}
+May, 2018: {end_date: Squeeze, start_date: Debian 6.0}
+Sarge: {end_date: 'March 31, 2008', start_date: 'June 6, 2005'}
+Slink: {end_date: 'September 30, 2000', start_date: 'March 9, 1999'}
+Wheezy: {end_date: 'April 26, 2016', start_date: 'May 4, 2013'}

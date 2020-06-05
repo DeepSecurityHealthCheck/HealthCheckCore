@@ -1,0 +1,69 @@
+
+<div class="page">
+
+        <div class="row" style="margin:0;">
+                <div class="row" style="margin:0;">
+                        <div class="alert alert-info trend-font-300" style="font-size:14px; padding-top:0; padding-bottom:0">
+                          <p>The settings & compliance report at this folder will allow you to drill into agent details and policies to easily detect the devices you may want to target for upgrades, or groups you may want to zero in on policy enhancements, use the following key to unlock:                </p>
+                          <p style="text-align:center; font-family:courier; font-size:18px;">
+                          {{report_data.tech_key}}
+                          </p>
+                      </div>
+                <div class="col-lg-11">
+                    <div class="trend-text-red trend-font-200" style="font-size: 18px; margin-top: 10px;">
+                        Top 20 Available fixes for the environment
+                    </div>
+                </div>
+            
+                    {% if report_data.computers_average_conformity | int > 80%}
+                   <div class="col-lg-1 trend-text-green" style="font-size: 22px; padding-top: 17px;">
+                    <div><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                    </div>
+                  {% else %}
+                  <div class="col-lg-1 trend-text-red" style="font-size: 22px; padding-top: 17px;">
+                    <div><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></div>
+                  </div>
+            
+                    {% endif %}
+            
+            </div>
+
+                <div class="col-lg-10">
+                    <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 12px; text-align: justify;">
+                        <p>
+                            The following list of misconfigurations is available for your environment. Created on {{report_options.generation_month}} {{report_options.generation_day}} of {{report_options.generation_date.year}}.
+                            <BR/> This list address critical issues and Trend Micro recommends a careful evaluation of each problem individually.
+                        </p>
+                        <p>
+                            The issues listed below are the most relevant, they are limited on the 20 most critical, For the full list check the
+                            <a href="[INSERT LINK TO TECH REPORT]" target="_blank">Tech report</a>
+                            <span style="font-size: 10px"> (Expires on {{report_options.expiration_month}} {{report_options.expiration_day}} of {{report_options.expiration_date.year}} ).</span>
+                             The metodology used to select the shown issues is explained in the appendix. 
+                        </p>
+                        <p>
+                            Some issues listed below may not apply to your environment, please check the appendix for an explanation about Contextual analysis.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            
+            {% for criticiy_level, info in report_options.dist_issues.items() %}
+            <div class="row" style="page-break-inside: avoid;margin:0; font-size:12px; text-align: justify;">
+                <div class="col-lg-10">
+                    <div style="float:left; padding-top: 5px; padding-left: 7px"><i class="fa fa-circle {{info.css_style}}" aria-hidden="true"></i></div>
+                    <div class="trend-text-grey-ultradark" style="padding-left: 25px; ">{{criticiy_level}}</div>
+                </div>
+                <BR/>
+                <ul>
+                    {% for issue in info.issues %}
+                    <li class="trend-text-grey-dark trend-font-300" style="text-align: justify; padding-right:35px; padding-top: 5px; font-size: 12px; text-align: justify;">
+                        <span class="trend-text-grey-ultradark trend-font-700">{{report_options.pretty_module_names[issue.description.module]}}</span> : {{issue.description.failure_item}}, {{issue.description.text}} [<span class="trend-text-grey-ultradark trend-font-700">{{issue.failed_times}}</span> occurrence(s)]
+                    </li>
+                    {% endfor %}
+            
+                </ul>
+            </div>
+            {% endfor %}
+
+</div>

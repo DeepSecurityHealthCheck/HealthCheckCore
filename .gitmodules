@@ -1,0 +1,3 @@
+[submodule "report_templates/tech_report/ds_bpg_client"]
+	path = report_templates/tech_report/ds_bpg_client
+	url =  https://github.com/DeepSecurityHealthCheck/TechnicalReport.git

@@ -1,0 +1,21 @@
+---
+#This yaml has the object to define the values related to the FIREWALL
+#configuration that is not specified per computer
+#expected accordingly the deep security best practice guide (v11.0).
+#Version 0.1 04-01-2019
+
+#The title is used for python scripts to call the information related to the
+#module. Please, do not change it.
+
+#This is a test rule, insert BPG Here
+title: "firewall_configuration"
+firewall_configuration:
+  deny_fragmented_packets_enabled:
+    weight: 6
+    operator: EQUAL
+    operand: False
+    description:
+      module: "ファイアーウォールステートフル設定"
+      failure_item: "「フラグメント化されたすべての受信パケットを拒否する」の値は無効となっています"
+      text: "ファイアーウォール機能の推奨として、 「フラグメント化されたすべての受信パケットを拒否する」を有効にする設定を推奨します。 "
+...

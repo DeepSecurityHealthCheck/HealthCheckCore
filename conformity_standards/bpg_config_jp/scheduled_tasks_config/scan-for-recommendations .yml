@@ -1,0 +1,29 @@
+title: "scan-for-recommendations"
+description: "コンピュータの推奨設定を検索（週次）"
+scan-for-recommendations:
+  schedule_details.recurrence_type:
+    weight: 8
+    operator: EQUAL
+    operand: "weekly"
+    description:
+      module: "Scheduled Task: Scan for recommendations"
+      failure_item: "週単位で実行すべきタスクが未登録"
+      text: "Deep Securityを運用する上では、 すべてのコンピュータに対して推奨検索の週次実行を強く推奨します。 推奨検索を予約タスクに設定する上でのベストプラクティスは、 グループごと（ポリシーごと、 またはコンピュータのグループに対して、 グループごとに1,000台以下）に対してタスクを設定し、 それらが異なる曜日に実行されるよう分散させる運用が推奨されます。 （例えば、 データベースサーバの検索は毎週月曜日に実行し、 メールサーバは毎週火曜日に実行する など） (63ページ - DSBPG)"
+
+  schedule_details.recurrence_type:
+    weight: 7
+    operator: NOT_EQUAL
+    operand: "hourly"
+    description:
+      module: "Scheduled Task: Scan for recommendations"
+      failure_item: "週単位で実行すべきタスクの実行が集中"
+      text: "推奨検索は、 Deep Security Manager のCPUリソースに負荷が集中する仕様です。 そのため、 設定したグループごとに異なる日程（曜日）で実行できるよう、 適切に予約タスクを配分することを推奨します。 この運用によって、 予約タスクによる性能問題を回避することが可能となります。 また、 頻繁に変更が発生するシステムでは、 その変更に合わせて推奨検索を頻繁に実行する必要があります。 そのため、 予約タスクの実行スケジュールをより綿密に設計することを推奨します。 (Page 63 - DSBPG)"
+
+  scan_for_recommendations_task_parameters.computer_filter.type:
+    weight: 7
+    operator: NOT_EQUAL
+    operand: "all-computers"
+    description:
+      module: "Scheduled Task: Scan for recommendations"
+      failure_item: "全コンピュータに対して推奨検索を予約すべき"
+      text: "推奨検索は、 すべてのコンピュータに対して予約タスクとして設定することが運用として推奨されます。 推奨検索を予約タスクに設定する上でのベストプラクティスは、 グループごと（ポリシーごと、 またはコンピュータのグループに対して、 グループごとに1,000台以下）に対してタスクを設定し、 それらが異なる曜日に実行されるよう分散させる運用が推奨されます。 （例えば、 データベースサーバの検索は毎週月曜日に実行し、 メールサーバは毎週火曜日に実行する など） (63ページ - DSBPG)"
