@@ -26,7 +26,7 @@ RUN pip3 install --upgrade pip && \
     pip3 install ./vendor/SDK/ && \
     cd ./report_templates/HTML_en && composer install && cd ../.. && \
     cd ./report_templates/HTML_jp && composer install && cd ../.. && \
-    cd ./report_templates/tech_report/ds_bpg_client/ && npm i && cd ../../../ &&\
+    cd ./report_templates/tech_report/TechnicalReport/ && npm i && cd ../../../ &&\
     chmod +x dshc.py
 
 # Run app.py when the container launches
