@@ -26,7 +26,7 @@ class ReportGenerator():
 		report_options: Other report options unrelated to the actual data
 			 such as color pallettes, etc.
 		"""
-		self.tech_report_path = './report_templates/tech_report/ds_bpg_client/'
+		self.tech_report_path = '.report_templates/tech_report/TechnicalReport/'
 		self.tech_report_build = self.tech_report_path + 'dist/'
 
 		self.jinja_env = Environment(
