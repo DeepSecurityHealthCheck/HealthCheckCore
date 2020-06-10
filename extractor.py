@@ -521,7 +521,7 @@ def get_report(generation_id, check_connection=True):
         
         if not check_connection:
             print(Fore.LIGHTRED_EX + "Report generation timed out after 16 minutes, probably firewall or internet issue")
-            print(Fore.LIGHTRED_EX + "You may try to parse only the report later using ./extractor " + str(generation_id))
+            print(Fore.LIGHTRED_EX + "You may try to parse only the report later using ./extractor --get " + str(generation_id))
             print(Fore.LIGHTCYAN_EX + "Try again later using this ID (save this value) {}".format(generation_id))
 
             with open("GENERATION_ID.txt","w+") as file:
