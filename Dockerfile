@@ -17,9 +17,13 @@ RUN apt-get update && \
 
 
 # Setting enviroment Docker to work with data_packs
+
+ARG DSHC_EXECUTED_URL=http://127.0.0.1
+ARG DSHC_CRASH_URL=http://127.0.0.1
+
 ENV ENV=DOCKER
-ENV DSHC_EXECUTED_URL=$(DSHC_EXECUTED_URL)
-ENV DSHC_CRASH_URL=$(DSHC_CRASH_URL)
+ENV DSHC_EXECUTED_URL=$DSHC_EXECUTED_URL
+ENV DSHC_CRASH_URL=$DSHC_CRASH_URL
 # Install any needed packages specified in requirements.txt
 RUN pip3 install --upgrade pip && \
     pip3 install --trusted-host pypi.python.org -r requirements.txt && \
