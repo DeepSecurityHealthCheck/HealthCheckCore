@@ -179,7 +179,7 @@ Detailed documentation on the code, project architecture can be found on the `do
 Deep Security Health Check was originally Developed by
 
 * Anderson Leite [@aandersonl](https://github.com/AandersonL)
-* Angelo Rodem <Angelo_Rodem@trendmicro.com>
+* Angelo Rodem [@angelorodem](https://github.com/angelorodem)
 * João Guimarães <Joao_Guimaraes@trendmicro.com>
 
 
