@@ -1,0 +1,16 @@
+#Use pip3 -r requirements.txt to install the dependencies
+jinja2==2.10
+tqdm
+pyyaml > 3.13
+psutil
+cryptography >= 2.5
+funcy
+prompt_toolkit
+pyinstaller
+colorama >= 0.4.1
+requests
+inflect
+boto3
+#pypiwin32
+
+#https://pyinstaller.readthedocs.io/en/v3.3.1/usage.html#using-upx
