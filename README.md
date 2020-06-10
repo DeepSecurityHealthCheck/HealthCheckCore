@@ -1,6 +1,6 @@
 # DEEP SECURITY HEALTH CHECK
 
-Automated Deep Security Health Check Verification    
+Automated Deep Security Health Check Verification     
 ![Project build](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoicEQrRGdHTllVdU5iUVBCRm13VUNBVUJydFl5VG9vRHZtcFMwK3V3TE0rOXVOWVNQOHNiRHR0OWpRdmpHMXhXU1NUMnowbFV2RTNjVXcraEhVRUxUdkhnPSIsIml2UGFyYW1ldGVyU3BlYyI6ImZNUzNUNG83M0xpbXFzOFkiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
 ## QUICKSTART
