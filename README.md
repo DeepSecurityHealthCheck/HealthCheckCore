@@ -65,7 +65,7 @@ usage: dshc [-h] [--licenses LICENSES [LICENSES ...]]
 ```
 
 ### OPTIONAL ARGUMENTS:
-
+```
  -h, --help            show this help message and exit
   --licenses LICENSES [LICENSES ...], -l LICENSES [LICENSES ...]
                         Space separated list of modules (grouped by license)
@@ -90,7 +90,7 @@ usage: dshc [-h] [--licenses LICENSES [LICENSES ...]]
   --output OUTPUT, -o OUTPUT
                         Path that zip file will be stored
   --version, -v         Print version and exit
-
+```
 ### VALID LANGUAGES
 ```
 en  English
