@@ -40,7 +40,7 @@ import deepsecurity
 
 API_CONFIG_PATH = "config/api_config.yml"
 HELP_STRING = """
-VALID LICENSES INPUT
+VALID LANGUAGES INPUT
 en  English
 jp  Japanese
 

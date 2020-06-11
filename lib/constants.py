@@ -9,7 +9,7 @@ By Running this tool you state that:
 {} To generate an UNENCRYPTED datapack, run the tool with -u """.format(EXTRACTOR_VERSION,Fore.LIGHTRED_EX,Fore.LIGHTMAGENTA_EX)
 
 EXTRACTOR_HELP_STRING = """
-VALID LICENSES INPUT
+VALID LANGUAGES INPUT
 en  English
 jp  Japanese
 
