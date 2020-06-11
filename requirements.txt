@@ -1,5 +1,5 @@
 #Use pip3 -r requirements.txt to install the dependencies
-jinja2==2.10
+jinja2==2.10.1
 tqdm
 pyyaml > 3.13
 psutil
