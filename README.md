@@ -149,7 +149,7 @@ optional arguments:
                         json file
   --version, -v         Print version and exit
 
-VALID LICENSES INPUT
+VALID LANGUAGES INPUT
 en  English
 jp  Japanese
 
