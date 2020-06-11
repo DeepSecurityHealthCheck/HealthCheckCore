@@ -14,14 +14,9 @@ Automated Deep Security Health Check Verification
 - PyInstaller to generate executables for the extractor tool
 - The complete set of prerequesites and dependencies can be found in the `Dockerfile`. We __advise against__ running the tool without docker.
 
-  1. python 3.7+ and the python requirements
-  2. php7.0-cli 
-  3. php7.0-xml 
-  4. php-font-lib 
-  5. php7.0-mbstring
-  6. php7.0-gd 
-  7. composer
-  8. PyInstaller
+  1. Docker
+  2. python 3.7+ and the python requirements
+  3. PyInstaller
 
 
 ## DOCKER IMAGE INSTALLATION
@@ -52,9 +47,8 @@ The configuration files for the program are placed in the tool's `config` direct
   - `api-version` Version in use by the API
 
 EXAMPLE
-```
-api-configuration:                                                                 
-  host: https://10.0.0.1:4119/api                        
+```                                                           
+  host: https://app.deepsecurity.trendmicro.com/api                        
   api-secret-key: myscretkey
   api-version: 'v1' #Example 'v1'       
 ```
@@ -63,65 +57,112 @@ api-configuration:
 
 ## USAGE
 ```
-dshc [-h] [-l --licenses LICENSES [LICENSES ...]]
-            [-m --modules MODULES [MODULES ...]] [--standard STANDARD] [-d --debug]
-            [-s --stress] [-r --remote PACKAGE]
-
+usage: dshc [-h] [--licenses LICENSES [LICENSES ...]]
+            [--modules MODULES [MODULES ...]] [--standard STANDARD] [--debug]
+            [--stress STRESS] [--remote REMOTE] [--generate-keys] [--migrate]
+            [--language LANGUAGE] [--key KEY] [--password PASSWORD]
+            [--output OUTPUT] [--version]
 ```
 
 ### OPTIONAL ARGUMENTS:
 
-* ```-h, --help```
-  * show the help message and exit
-* ```--licenses LICENSES [LICENSES ...], -l LICENSES [LICENSES ...]```
-  * Space separated list of modules (grouped by license) to be checked
+ -h, --help            show this help message and exit
+  --licenses LICENSES [LICENSES ...], -l LICENSES [LICENSES ...]
+                        Space separated list of modules (grouped by license)
+                        to be checked
+  --modules MODULES [MODULES ...], -m MODULES [MODULES ...]
+                        Space separated list of modules to be checked
+  --standard STANDARD, -c STANDARD
+                        Conformity Standard to be used
+  --debug, -d           Debug messages will be written in debug.log
+  --stress STRESS, -s STRESS
+                        Stress test - Choose number (dummy) of computers to
+                        run test
+  --remote REMOTE, -r REMOTE
+                        Loads a previously extracted data package
+  --generate-keys, -g   Generate a new cryptographic key pair and exits
+  --migrate             Migrates a Data Package to a new key pair and exits
+  --language LANGUAGE   Language to be used in the report
+  --key KEY, -k KEY     Path to your private key
+  --password PASSWORD, -p PASSWORD
+                        Your private key password, this will be written in
+                        your history file!
+  --output OUTPUT, -o OUTPUT
+                        Path that zip file will be stored
+  --version, -v         Print version and exit
 
-* ```--modules MODULES [MODULES ...], -m MODULES [MODULES ...]```
-  * Space separated list of modules to be checked
-
-* ```--standard STANDARD, -c STANDARD```
-  * Conformity Standard to be used
-
-* ```--debug, -d```
-  * Debug messages will be written in debug.log
-
-* ```--stress STRESS, -s STRESS```
-  * Stress test - Choose number (dummy) of computers to
-      run test
-
-* ```--remote REMOTE, -r PACKAGE_NAME```
-  * See EXTRACTOR AND REMOTE MODE below 
+### VALID LANGUAGES
+```
+en  English
+jp  Japanese
+```
 
 #### VALID LICENSES INPUT
-- `mp`  Malware Protection - Anti-Malware, Web Reputation
-- `ss`  System Security - Integrity Monitoring, Log Inspection, Application Control)
-- `ns`  Network Security - Firewall, Intrusion Prevention
-- `all` All modules
+```
+mp  (Malware Protection - Anti-Malware, Web Reputation)
+ss  (System Security - Integrity Monitoring, Log Inspection, Application Control)
+ns  (Network Security - Firewall, Intrusion Prevention)
+all (All modules)
+```
 
 #### VALID MODULES INPUT
-- `am`  Anti-Malware
-- `wr`  Web Reputation
-- `im`  Integrity Monitoring
-- `li`  Log Inspection
-- `ac`  Application Control
-- `fw`  Firewall
-- `ip`  Intrusion Prevention
+```
+Note: If no modules or licenses are explicitly declared, all modules will be checked by default
+am  (Anti-Malware)
+wr  (Web Reputation)
+im  (Integrity Monitoring)
+li  (Log Inspection)
+ac  (Application Control)
+fw  (Firewall)
+ip  (Intrusion Prevention)
+```
 
 If no modules or licenses are explicitly declared, all modules will be checked by default
 
 ## EXAMPLES
-* `dshc -l mp ss -m ip`
-  * Checks all Malware Protection and System Security modules and Intrusion Prevention module
-* `dshc -r my_pack.dat`
-  * Loads the my_pack.dat placed in the /data_packs directory
-
-
+* `dshc -r my_pack.dat -l mp ss -m ip`
+  * Loads the my_pack.dat placed in the /etc/DSHC/data_packs directory and checks all Malware Protection and System Security modules and Intrusion Prevention module
 
 ### EXTRACTOR AND REMOTE MODE
 
-Intended to be used in cases where a customer is not able or willing to open a direct network connection to the DSM's API, the Standalone `extractor.py` tool can be run by the customer from inside the network.
+The extractor Windows and Linux binaries are available to be downloaded in the releases tab, note that official PUBLIC keys are available with the binaries allowing for remote processing of data on our cloud. 
 
-The `extractor.py`  accesses the API and generates an encrypted data package containing the Deep Security's environment information. The data packages can then be unencrypted and used through the `-r` or `--remote` mode of the main  `dshc` program.
+This tool is used to parse information from the client DSM through the API, it can be used on-premises on air-gapped environments, and on the CloudOne  Workload Security (SaaS).
+
+The `extractor.py`  accesses the API and generates an encrypted data package containing the Deep Security's environment information. The data packages can then be unencrypted and used through the `-r` or `--remote` mode of the main  `dshc` program having the private keys.
+
+The Extractor allows for automatic generation of the report using our cloud which is the standard if you are downloading the binaries, if you wish to only generate the encrypted package, you will have to use the `--notsend` argument
+
+#### EXTRACTOR HELP
+```
+usage: extractor [-h] [--get GET] [--send SEND] [--notsend] [--unencrypted]
+                 [--version]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --get GET, -g GET     Attempts to download a report of an already submitted
+                        pack using the ID
+  --send SEND, -p SEND  Submit a data pack file for report generation,
+                        recieves ID
+  --notsend, -n         Do not send for remote processing, just generate .dat
+  --unencrypted, -u     Generate an UNENCRYPTED version of the Datapack as a
+                        json file
+  --version, -v         Print version and exit
+
+VALID LICENSES INPUT
+en  English
+jp  Japanese
+
+VALID MODULES INPUT (SPACE SEPARATED)
+am  (Anti-Malware)
+wr  (Web Reputation)
+im  (Integrity Monitoring)
+li  (Log Inspection)
+ac  (Application Control)
+fw  (Firewall)
+ip  (Intrusion Prevention)
+all (All modules)
+```
 
 #### KEY GENERATION AND USAGE
 
