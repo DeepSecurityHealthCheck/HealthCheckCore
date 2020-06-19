@@ -20,19 +20,20 @@ class Api_Loader(object):
 
         expand_options = deepsecurity.Expand()
         expand_options.add(
-            deepsecurity.Expand.anti_malware,
-            deepsecurity.Expand.application_control,
-            deepsecurity.Expand.firewall,
-            deepsecurity.Expand.web_reputation,
-            deepsecurity.Expand.log_inspection,
-            deepsecurity.Expand.integrity_monitoring,
-            deepsecurity.Expand.intrusion_prevention,
-            deepsecurity.Expand.computer_settings,
-            deepsecurity.Expand.computer_status,
-            deepsecurity.Expand.ec2_virtual_machine_summary,
-            deepsecurity.Expand.azure_arm_virtual_machine_summary,
-            deepsecurity.Expand.azure_vm_virtual_machine_summary,
-            deepsecurity.Expand.gcp_virtual_machine_summary
+            # deepsecurity.Expand.anti_malware,
+            # deepsecurity.Expand.application_control,
+            # deepsecurity.Expand.firewall,
+            # deepsecurity.Expand.web_reputation,
+            # deepsecurity.Expand.log_inspection,
+            # deepsecurity.Expand.integrity_monitoring,
+            # deepsecurity.Expand.intrusion_prevention,
+            # deepsecurity.Expand.computer_settings,
+            # deepsecurity.Expand.computer_status,
+            # deepsecurity.Expand.ec2_virtual_machine_summary,
+            # deepsecurity.Expand.azure_arm_virtual_machine_summary,
+            # deepsecurity.Expand.azure_vm_virtual_machine_summary,
+            # deepsecurity.Expand.gcp_virtual_machine_summary
+            deepsecurity.Expand.all
         )
         self.COMPUTER_EXPAND = expand_options.list()
 
