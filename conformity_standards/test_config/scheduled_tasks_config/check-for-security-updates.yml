@@ -9,4 +9,4 @@ check-for-security-updates:
     description:
       module: "Scheduled Task: Check for security updates"
       failure_item: "No weekly recurrence"
-      text: "Trend Micro strongly recommends running checks for security updates daily (Page 63 - DSBPG)"
+      text: "Trend Micro strongly recommends running checks for security updates daily "

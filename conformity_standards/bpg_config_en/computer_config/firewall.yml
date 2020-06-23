@@ -33,7 +33,7 @@ firewall:
       failure_item: "Enable events for packets 'out of allowed policy'"
       text: >
         "Out of Allowed Policy (Open Port) events can help quickly identify
-        misconfigurations in rules. (Page 47 - DSBPG)"
+        misconfigurations in rules. "
 #Checks expected rules when the firewall module is on.
   firewall.rule_ids:
     weight: 6
@@ -44,7 +44,7 @@ firewall:
       module: "firewall"
       failure_item: "Add Rules related to ICMP and ARP"
       text: >
-        "Firewall expected rules when the firewall module is enabled. (Page 46, 47 - DSBPG)"
+        "Firewall expected rules when the firewall module is enabled. "
   
   firewall.rule_ids:
     weight: 7
@@ -55,5 +55,5 @@ firewall:
       failure_item: "The number of applied rules should be below 300"
       text: >
         "Assigning more than 300 rules can negatively affect the systems's
-        performance (Page 47 - DSBPG)"        
+        performance "        
 ...
