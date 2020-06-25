@@ -55,9 +55,12 @@ from deepsecurity.api.policy_log_inspection_rule_details_api import PolicyLogIns
 from deepsecurity.api.port_lists_api import PortListsApi
 from deepsecurity.api.report_templates_api import ReportTemplatesApi
 from deepsecurity.api.rulesets_api import RulesetsApi
+from deepsecurity.api.sns_api import SNSApi
 from deepsecurity.api.scheduled_tasks_api import ScheduledTasksApi
 from deepsecurity.api.schedules_api import SchedulesApi
+from deepsecurity.api.scripts_api import ScriptsApi
 from deepsecurity.api.software_changes_api import SoftwareChangesApi
 from deepsecurity.api.software_inventories_api import SoftwareInventoriesApi
 from deepsecurity.api.stateful_configurations_api import StatefulConfigurationsApi
 from deepsecurity.api.system_settings_api import SystemSettingsApi
+from deepsecurity.api.tenants_api import TenantsApi
