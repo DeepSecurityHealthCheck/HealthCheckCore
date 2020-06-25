@@ -44,5 +44,5 @@ integrity_monitoring:
       text:
         "As a best practice, recommended rules should be assigned to the policy
          and not directly to computers. It's better not to apply the rules
-         automatically before testing it. (Page 60 - DSBPG)"
+         automatically before testing it. "
 ...
