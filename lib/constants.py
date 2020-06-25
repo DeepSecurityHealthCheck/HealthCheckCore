@@ -1,6 +1,6 @@
 from colorama import init, Fore
 import os
-EXTRACTOR_VERSION = "1.8.3"
+EXTRACTOR_VERSION = "1.8.4"
 EXTRACTOR_WIZARD_HEADER = """
 DSHC EXTRACTOR v{}
 By Running this tool you state that:
