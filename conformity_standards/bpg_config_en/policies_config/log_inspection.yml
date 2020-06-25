@@ -44,7 +44,7 @@ log_inspection:
          syslog when they equal or exceed the following severity level: This
          should typically be changed when a syslog server isused. This setting
          determines which event triggered by those rules is sent to the syslog
-         server (if syslog is enabled). (Page 54 - DSBPG)"
+         server (if syslog is enabled). "
   #This setting determines which log inspection events are kept in the database
   #and displayed on the log inspection events screen.
   policy_settings.log_inspection_setting_severity_clipping_agent_event_store_level_min.value:
@@ -60,5 +60,5 @@ log_inspection:
         or exceed the following severity level: This setting determines which
         log inspection events are kept in the database and displayed on the log
         inspection events screen. Custom rules can be made to monitor logs that
-        are not in the included set of rules. (Page 54 - DSBPG)"
+        are not in the included set of rules. "
 ...

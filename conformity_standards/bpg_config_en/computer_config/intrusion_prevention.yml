@@ -44,7 +44,7 @@ intrusion_prevention:
       failure_item: "'Auto apply recommendations' should be enabled"
       text: >
         "Use Recommendation Scan to apply the necessary rules for the best
-        protection and performance. (Page 50 - DSBPG)"
+        protection and performance. "
 
   intrusion_prevention.rule_ids:
     weight: 6
@@ -55,5 +55,5 @@ intrusion_prevention:
       failure_item: "More than 300 rules applied"
       text: >
         "Assigning more than 300 rules can negatively affect the systems's
-        performance (Page 50 - DSBPG)"        
+        performance "        
 ...

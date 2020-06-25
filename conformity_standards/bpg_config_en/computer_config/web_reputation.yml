@@ -46,7 +46,7 @@ web_reputation:
       text: >
         "The default security level “Medium” is suitable for most users.
         However, if you want further security, you can adjust it to the “High”
-        level. (Page 43 - DSBPG)"
+        level. "
   #If you have specific web pages to allow or block, configure them in the Exceptions tab.
   #By default, Web Reputation is enabled to port 80 and 8080.
   #If you have an HTTP proxy server using other ports, configure it
@@ -61,7 +61,7 @@ web_reputation:
       text: >
         "By default, Web Reputation is enabled to port 80 and
         8080. If you have an HTTP proxy server using other ports, configure it in
-        the Advanced tab. (Page 43 - DSBPG)"
+        the Advanced tab. "
   #Include internal company URLs in the Allowed list under Exceptions.
   computer_settings.web_reputation_setting_allowed_urls.value:
     weight: 7
@@ -74,7 +74,7 @@ web_reputation:
       text: >
         "It's a best practice to include internal company URLs in the
         Allowed list under Exceptions because it will decrease the overload.
-        (Page 44 - DSBPG)"
+        "
   #Web Reputation queries will go to the Smart Protection Server (if enabled)
   #or to our cloud WRS servers. It’s recommended to set up a local Smart
   #Protection Server in house to limit the amount of required internet queries,
@@ -90,5 +90,5 @@ web_reputation:
         "Web Reputation queries will go to the Smart Protection Server
         (if enabled) or to our cloud WRS servers. It’s recommended to set up a
         local Smart Protection Server in house to limit the amount of required
-        internet queries, which can lead to performance degradation. (Page 43 - DSBPG)"
+        internet queries, which can lead to performance degradation. "
 ...

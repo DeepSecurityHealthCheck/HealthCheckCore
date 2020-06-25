@@ -10,7 +10,7 @@ send-policy:
       module: "Scheduled Task: Send Policy"
       failure_item: "No weekly recurrence"
       text: "Trend Micro strongly recommends sending policies to computers
-        weekly and to run them as needed (Page 63 - DSBPG)"
+        weekly and to run them as needed "
 
   schedule_details.recurrence_type:
     weight: 7
@@ -20,5 +20,5 @@ send-policy:
       module: "Scheduled Task: Send Policy"
       failure_item: "No weekly recurrence"
       text: "Trend Micro strongly recommends sending policies to computers
-        weekly and to run them as needed (Page 63 - DSBPG)"
+        weekly and to run them as needed "
   
