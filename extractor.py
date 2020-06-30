@@ -390,7 +390,14 @@ def unpack_data(file_name, private_key_path=None, key_password=None):
             exit(667)
 
     print("Done!")
-    return pickle.loads(data)
+    data = b""
+    try:
+        data = pickle.loads(data)
+    except Exception as e:
+        print(Fore.RED + "Error while unserializing")
+        raise Exception("Serialization error")
+
+    return data
 
 
 def migrate_package():
@@ -571,6 +578,7 @@ if __name__ == '__main__':
     #parser.add_argument('--key', '-k', help="Path to the public key")
     parser.add_argument('--version', '-v',action='store_true', help='Print version and exit')
     args = parser.parse_args()
+    print(Fore.LIGHTMAGENTA_EX + "Aways check if you are running the latest version, current: {}!".format(str(constants.EXTRACTOR_VERSION)))
     if args.version:
         print(constants.EXTRACTOR_VERSION)
         input("--[Press enter to exit]--")
