@@ -8,6 +8,7 @@ __pycache__
 *.pyc
 config/api_config.yml
 config/report_details.yml
+*.yml
 *.pdf
 /*.tex
 /report.*

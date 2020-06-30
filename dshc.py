@@ -354,8 +354,9 @@ def main(options):
         The variable for those modules on a computer becomes None
         """
     except Exception as e:
-        report_crash(str(e), None)
-        exit(-1)
+        var = traceback.format_exc()
+        raise Exception("Main A {} \n {}".format(str(var), str(e)))
+        
 
     try:
         arg_modules_to_check = list(filter(lambda x: getattr(computer_list[0],x) != None, arg_modules_to_check))
@@ -451,18 +452,15 @@ def main(options):
 
 
     except Exception as e:
-        if debug:
-            print(Fore.LIGHTRED_EX + "Debug mode, Crash report not sent!")
-        else:
-            report_crash(str(e), data_pack)
-            traceback.print_exc(e)
-        exit(-1)
-
+        var = traceback.format_exc()
+        raise Exception("Main B {} \n {}".format(str(var), str(e)))
+        
+        
 
 def process_cloud():
     """Load all serveless information"""
     # Pull each times if there is new sqs events
-    try_count = 5 # This will run for 25 seconds if there is no sqs message
+    try_count = 6 # This will run for 30 seconds if there is no sqs message
     wait_time = 5
     count = 0
     dshc_cloud = CloudManager()
@@ -508,6 +506,7 @@ def process_cloud():
                     dshc_cloud.write_new_report(res, generation_id)
                     count = 0
                 except Exception as e:
+                    report_crash(str(e), None)
                     print("Error while processing package, Please check if your extractor version is at [{}]"
                     "\n debug info: [Id]: {} -- [Exception] : {}".format(str(constants.EXTRACTOR_VERSION),str(generation_id),str(e)))
                     dshc_cloud.remove_message(params[i])
@@ -522,6 +521,7 @@ def process_cloud():
 
 
 def start(modules=[], language=constants.DEFAULT_LANGUAGE, remote="", private_key_password=""):
+    return_value = None
     try:
         parser = argparse.ArgumentParser(
             prog="dshc",
@@ -563,13 +563,16 @@ def start(modules=[], language=constants.DEFAULT_LANGUAGE, remote="", private_ke
         for config in USER_CONFIG_FILES:
             if os.path.exists(config) is False:
                 print("{} is missing!".format(config))
-                exit(1)
+                var = traceback.format_exc()
+                raise Exception("Start B {}\n".format(str(var)))
+
+        return_value = main(arg_options)
 
     except Exception as e:
-        report_crash(str(e), None)
-        exit(-1)
+        var = traceback.format_exc()
+        raise Exception("Start A {} \n {}".format(str(var), str(e)))
 
-    return main(arg_options)
+    return return_value
 
 if __name__ == '__main__':
     if os.environ.get('AWS', False):

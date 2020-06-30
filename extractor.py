@@ -21,6 +21,8 @@ from base64 import b64encode
 import random
 import argparse
 from colorama import init, Fore
+
+import traceback
 init(autoreset=True)
 
 from tqdm import tqdm
@@ -243,11 +245,8 @@ def pack_data(data_migrate=None, send_now=True, unencrypted=False):
             "access. the file is extremelly secure it can be manipulated anywere".format(Fore.LIGHTCYAN_EX,
             Fore.LIGHTYELLOW_EX,output_name,Fore.LIGHTCYAN_EX))
 
-
             print(Fore.LIGHTGREEN_EX + "Package was saved successfully as {} !".format(output_name))
-        else:
-            print(Fore.YELLOW + "The report was successfully generated, the data packet was not saved locally")
-    
+            
     else:
             try:
                 with open(output_name+".dat","wb") as out:
@@ -386,11 +385,19 @@ def unpack_data(file_name, private_key_path=None, key_password=None):
         try:
             data = lzma.decompress(compressed)
         except Exception as e:
-            print(Fore.RED + "Error while decompressing " + str(e))
-            exit(667)
+            var = traceback.format_exc()
+            raise Exception("Decompress A {} \n {}".format(str(var), str(e)))
 
     print("Done!")
-    return pickle.loads(data)
+    ret_data = b""
+    try:
+        ret_data = pickle.loads(data)
+    except Exception as e:
+        print(Fore.RED + "Error while unserializing")
+        var = traceback.format_exc()
+        raise Exception("Unpack Serial {} \n {}".format(str(var), str(e)))
+
+    return ret_data
 
 
 def migrate_package():
@@ -571,6 +578,7 @@ if __name__ == '__main__':
     #parser.add_argument('--key', '-k', help="Path to the public key")
     parser.add_argument('--version', '-v',action='store_true', help='Print version and exit')
     args = parser.parse_args()
+    print(Fore.LIGHTMAGENTA_EX + "Aways check if you are running the latest version, current: {}!".format(str(constants.EXTRACTOR_VERSION)))
     if args.version:
         print(constants.EXTRACTOR_VERSION)
         input("--[Press enter to exit]--")

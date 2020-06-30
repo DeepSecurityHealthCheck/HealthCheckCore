@@ -6,6 +6,7 @@ from lib.yaml_parser import YAMLParser
 from colorama import init, Fore
 import yaml
 import os
+import traceback
 init(autoreset=True)
 
 class Api_Loader(object):
