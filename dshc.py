@@ -564,7 +564,7 @@ def start(modules=[], language=constants.DEFAULT_LANGUAGE, remote="", private_ke
             if os.path.exists(config) is False:
                 print("{} is missing!".format(config))
                 var = traceback.format_exc()
-                raise Exception("Start B {} \n {}".format(str(var)))
+                raise Exception("Start B {}\n".format(str(var)))
 
         return_value = main(arg_options)
 
