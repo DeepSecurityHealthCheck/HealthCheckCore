@@ -1,0 +1,41 @@
+<div class="page">
+<div class="trend-text-red trend-font-300" style="font-size: 30px; padding-top: 30px;">
+    3. セキュリティ適合性の概要
+</div>
+<div class="trend-text-red trend-font-200" style="font-size: 24px; padding: 20px 0;">
+    <a name="page07">3.1 エージェントの適合率</a>
+</div>
+<div class="row" style="margin:0;">
+        <div class="col-lg-10">
+            <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 12px; text-align: justify;">
+                <p>
+                    [INSERT TEXT 'BOUT THIS] Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quas reiciendis fuga, libero nobis magni error et nulla impedit, aut ipsam nam earum similique molestiae blanditiis voluptate cupiditate atque consectetur.
+                </p>
+            </div>
+        </div>
+
+</div>
+
+
+<div style="margin-top: 10px; padding-top: 10px;">
+    <div style="background-color: rgb(229,233,235); height: 1em; width: 100%;">
+      {% for level,info  in report_options.agent_average_conformity_slices.items() %}
+        <div class="{{info.css_style}}_bg" style="background-size: 23em 0.25em; height: 1em; float:left; width: {{info.percent}}%;"></div>
+      {% endfor %}
+    </div>
+</div>
+<div style="width: 100%">
+    <p aria-hidden="true"></p>
+</div>
+<div style="margin-top: 20px; padding-top: 20px">
+  {% for level,info  in report_options.agent_average_conformity_slices.items() %}
+    <div class="row" style="margin:0; font-size:12px; text-align: justify;">
+        <div style="float:left; padding-top: 5px; padding-left: 7px"><i class="fa fa-circle {{info.css_style}}" aria-hidden="true"></i></div>
+        <div class="trend-text-grey-ultradark" style="float:left;padding-left: 8px;position: relative;">{{level}} </div>
+        <div class="trend-text-grey" style="font-size:11px ;padding-left: 25px;position: relative;"> ({{info.count}} Agents)</div>
+    </div>
+{% endfor %}
+</div>
+
+
+</div>

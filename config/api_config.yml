@@ -1,0 +1,3 @@
+host: https://<Your DSM Hostname or IP>:<DSM Port>/api #Your DSM hostname
+api-secret-key: #Your API KEY
+api-version: 'v1' #Default 'v1'

@@ -1,0 +1,51 @@
+---
+#This yaml has the object to define the values related to the LOG INSPECTION
+#configuration that is specified per computer
+#expected accordingly the deep security best practice guide (v11.0).
+#Version 0.1 04-01-2019
+
+#The title is used for python scripts to call the information related to the
+#module. Please, do not change it.
+title: "log_inspection"
+descrption: ""
+log_inspection:
+  #It checks if log inspection module is activated.
+  log_inspection.state:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 10
+    #It has six possible operators. For this comparison, it is equal.
+    operator: EQUAL
+    operand: "on"
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "log_inspection"
+      failure_item: "セキュリティログ監視：無効"
+      text: >
+          "この機能は、 システムログを解析することによって、 監査証跡を確保する役割を担います。 これにより、 PCI DSSなどの業界標準、 あるいは貴社で満たすべき社内セキュリ ティ要件などについて容易に対応することが可能になります。 "
+  #This should typically be changed when a syslog server is used.
+  #This setting determines which event triggered by those rules is sent to
+  #the syslog server (if syslog is enabled).
+  policy_settings.log_inspection_setting_severity_clipping_agent_event_send_syslog_level_min.value:
+    weight: 7
+    operator: NOT_CONTAINS
+    #Values are strings such as 'Low (0)' or 'Medium (6)'
+    #Assuming a good minimum to be above the Low (0-3)
+    operand: ["Low"] 
+    description:
+      module: "log_inspection"
+      failure_item: "イベント送信のためには「最低」以上の重大度の設定が必要"
+      text: "（Syslogへの転送機能が有効な場合）適用したルールの重大度のレベルを満たす、 あるいは超過している場合には Deep Security Agent や Deep Security Virtual ApplianceのイベントをSyslogへ送ります。 この重大度は通常、 syslog サーバを使用するときには調整しておく必要があります。 この設定は、 これらのセキュリティログ監視ルールによって発報されるイベントは、 すべてsyslogサーバに送信されることになるためです。 (54ページ - DSBPG)"
+  #This setting determines which log inspection events are kept in the database
+  #and displayed on the log inspection events screen.
+  policy_settings.log_inspection_setting_severity_clipping_agent_event_store_level_min.value:
+    weight: 7
+    operator: NOT_CONTAINS
+    operand: ["Low"]
+    description:
+      module: "log_inspection"
+      failure_item: "保存すべきイベントの適切な設定が必要"
+      text: "ルールに設定した重大度以上のレベルのイベントについては、 Deep Security Managerへ送信/保存できるように、 Deep Security AgentやDeep Security Virtual Appliance内にイベントを保存します。 そのため、 どのイベントがデータベースに保持され、 どのイベントが管理画面に表示されるべきかを決めることができ    ます。 予め用意されたルールセットにないログを監視するには、 独自にカスタムルールを作成することもできます。 これらを貴社環境に合わせて、 適切に設定することを推奨します。 (54ページ - DSBPG)"
+...

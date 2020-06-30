@@ -1,0 +1,79 @@
+---
+#This yaml has the object to define the values related to the WEB REPUTATION
+#configuration specified per computer
+#expected accordingly the deep security best practice guide (v11.0).
+#Version 0.1 04-01-2019
+
+#The title is used for python scripts to call the information related to the
+#module. Please, do not change it.
+title: "web_reputation"
+descrption: ""
+web_reputation:
+  #It checks if web reputation module is activated.
+  web_reputation.state:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 10
+    #It has six possible operators. For this comparison, it is equal.
+    operator: EQUAL
+    operand: "on"
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "web_reputation"
+      failure_item: "Webレピュテーション: 無効"
+      text: >
+        "この機能は、 犯罪者達が利用する悪意のあるドメインや 既知のCommunication&Controlサーバ（通称：C&Cサーバ）への接続を遮断するフィルタリング機能を提供します。 "
+  #The default security level “Medium” is suitable for most users.
+  #However, if you want further security, you can adjust it to the “High” level.
+  policy_settings.web_reputation_setting_security_level.value:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 8
+    #It has six possible operators. For this comparison, it is equal.
+    operator: NOT_EQUAL
+    #It is the recommended value for this topic in the DS-BPG.
+    operand: "Low"
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "web_reputation"
+      failure_item: " セキュリティレベル「低」。 （推奨：「中」以上）"
+      text: "この機能の初期状態ではセキュリティレベル は「中」 であり、 多くのユーザーにとって適切なはずです。 しかしながら、 より高いセキュリティを望むなら、 セキュリティレベル「高」 へ変更することを推奨します。 (43ページ - DSBPG)"
+  #If you have specific web pages to allow or block, configure them in the Exceptions tab.
+  #By default, Web Reputation is enabled to port 80 and 8080.
+  #If you have an HTTP proxy server using other ports, configure it
+  #in the Advanced tab.
+  policy_settings.web_reputation_setting_monitor_port_list_id.value:
+    weight: 6
+    operator: NOT_EQUAL
+    operand: "80,8080" #Default Value
+    description:
+      module: "web_reputation"
+      failure_item: "有害な可能性のあるWebページを監視するポート」の有効化と調整（推奨：80,8080以外も対象として設定する)"
+      text: "初期状態では、 Webレピュテーションは80番もしくは8080番ポートに対してのみ有効です。 もし他の通信ポートが利用可能なHTTPプロキシサーバを利用して いる場合には、 Webレピュテーションの設定画面のうち、 「詳細」タブの「有害な可能性のあるWebページを監視するポート」の値として、 適切なポートリストを指定する必要があります。 (43ページ - DSBPG)"
+  #Include internal company URLs in the Allowed list under Exceptions.
+  policy_settings.web_reputation_setting_allowed_urls.value:
+    weight: 7
+    operator: NOT_EQUAL
+    #Here will it be the company`s website address.
+    operand: "" #Change it.
+    description:
+      module: "web_reputation"
+      failure_item: "社内WEBシステムのURLを許可リストに登録する。 "
+      text: "負荷軽減や誤検知防止の観点から、 Webレピュテーション設定画面の「除外」タブにある 「許可リスト」に、 社内WEBシステムのURLを追加することは有効な方法です。 (44ページ - DSBPG)"
+  #Web Reputation queries will go to the Smart Protection Server (if enabled)
+  #or to our cloud WRS servers. It’s recommended to set up a local Smart
+  #Protection Server in house to limit the amount of required internet queries,
+  #which can lead to performance degradation.
+  policy_settings.web_reputation_setting_smart_protection_local_server_enabled.value:
+    weight: 7
+    operator: EQUAL
+    operand: "true" #Change it.
+    description:
+      module: "web_reputation"
+      failure_item: "オンプレミスの場合）貴社内ネットワークに設置された Smart Protection Server (通称：SPS) の使用（推奨：有効）"
+      text: "Webレピュテーションへの問い合わせは、 設置されている場合には SPSに対して、 そうでなければ弊社のクラウド上にある Webレピュテーションサービスサーバに対して送信されます。 そのため、 WAN回線の速度に不安がある環境においては、 インターネット向けトラフィックを軽減するためにも、 社内ネットワーク内にSPSを構築することを推奨します。 (43ページ - DSBPG)"
+...

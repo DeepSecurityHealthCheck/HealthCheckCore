@@ -1,0 +1,51 @@
+---
+#This yaml has the object to define the values related to the INTRUSION PREVENTION
+#configuration that is specified per computer
+#expected accordingly the deep security best practice guide (v11.0).
+#Version 0.1 04-01-2019
+
+#The title is used for python scripts to call the information related to the
+#module. Please, do not change it.
+title: "intrusion_prevention"
+descrption: ""
+intrusion_prevention:
+  #It checks if intrusion prevention module is activated.
+  intrusion_prevention.state:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 10
+    #It has six possible operators. For this comparison, it is equal.
+    operator: NOT_EQUAL
+    operand: "off"
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "intrusion_prevention"
+      failure_item: "侵入防御 : 無効 (推奨：有効) "
+      text: "この機能は、 送受信トラフィックを検査することによって、 不審な通信を検知または遮断することができます。 この仕組みによって、 既知の脆弱性攻撃からのコンピュータの保護に加え、 いち早く侵入防御ルールを配布してゼロデイ攻撃から貴社コンピュータの保護を実現します。 "
+  #Automatically implement Intrusion Prevention Recommendations (when possible)
+  policy_settings.intrusion_prevention_setting_auto_apply_recommendations_enabled.value:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 6
+    #It has six possible operators. For this comparison, it is equal.
+    operator: EQUAL
+    #It is the recommended value for this topic in the DS-BPG.
+    operand: "Yes" #Yes or NO
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "intrusion_prevention"
+      failure_item: "侵入防御の推奨設定を自動的に適用: いいえ（推奨値：はい）"
+      text: "対象とするコンピュータの最適な保護とパフォーマンスを考慮して、 必要なルールを自動適用することができる「推奨検索」を積極的に活用することを推奨します。 ただし、 新たな侵入防御ルールを検証する運用を行っている環境では、 この限りではありません。 (50ページ - DSBPG)"
+  intrusion_prevention.rule_ids:
+    weight: 6
+    operator: LENGTH_NOT_GREATER_THAN
+    operand:  300
+    description:
+      module: "intrusion_prevention"
+      failure_item: "適用するルール数の上限は300まで"
+      text: "この機能では、 300以上のルールを適用すると、 対象コンピュータのパフォーマンスに悪影響を及ぼす可能性があります。 そのため、 適用するルールが300を下回るよう調整する必要があります。 (47ページ - DSBPG)"
+...

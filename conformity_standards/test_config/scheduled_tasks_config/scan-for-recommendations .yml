@@ -1,0 +1,35 @@
+title: "scan-for-recommendations" 
+description: "Weekly Scan for recommendations on separate computer groups"
+scan-for-recommendations:
+  schedule_details.recurrence_type:
+    weight: 8
+    operator: EQUAL
+    operand: "weekly"
+    description:
+      module: "Scheduled Task: Scan for recommendations"
+      failure_item: "No weekly recurrence"
+      text: "Trend Micro strongly recommends running Recommendations scan for all computers weekly - the best practice is to set the task by group (per policy, or for a
+      group of computers, no more than 1,000 machines per group) and spread it to different days (database
+      server scans are scheduled every Monday,  "
+
+  schedule_details.recurrence_type:
+    weight: 7
+    operator: NOT_EQUAL
+    operand: "hourly"
+    description:
+      module: "Scheduled Task: Scan for recommendations"
+      failure_item: "Hourly recurrence"
+      text: "Recommendation scans can be CPU-intensive on the Deep Security Manager, so setting different schedules 
+        per group will help avoid performance issues. 
+        Schedule the recommendation scans more frequently for systems that change often.  "        
+
+  scan_for_recommendations_task_parameters.computer_filter.type:
+    weight: 7
+    operator: NOT_EQUAL
+    operand: "all-computers"
+    description:
+      module: "Scheduled Task: Scan for recommendations"
+      failure_item: "Run on all computers"
+      text: "When scheduling recommendation scans, the best practice is to set the task by group (per policy, or for a
+      group of computers, no more than 1,000 machines per group) and spread it to different days (database
+      server scans are scheduled every Monday, mail server scans are scheduled every Tuesday, and so on)."      

@@ -1,0 +1,336 @@
+<div class="page">
+  <div class="trend-text-red trend-font-300" style="font-size: 30px; padding-top: 30px;">
+    <a name="page05">1. Report Overview</a>
+  </div>
+
+  <div class="row" style="margin:0;">
+    <div class="col-lg-12">
+      <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 12px; text-align: justify;">
+        <p>The primary objective of this report is to outline the current status
+          of computers protected by Deep Security and suggest recommendations
+          specifically targeted at increasing the overall security posture for your environment.
+          This report provides the following information:</p>
+        <ul>
+          <li>An overview of the conformity level of Deep Security.</li>
+          <li>A per-module breakdown of their use and conformity score</li>
+          <li>A list of the most critical issues found.</li>
+          <li>A high-level technical overview, including the main Operating Systems in use, DS Agent Versions and 10 least conforming computers.</li>
+        </ul>
+        <p>
+          All results provided should be analysed in the context of the needs and particularities of the environment in question,
+          as configuration checks may prove to be more or less critical for it's security and operational integrity.
+        </p>
+      </div>
+    </div>
+
+    <!--
+    <div class="col-lg-4" style="padding-top: 30px">
+    <div style="text-align:center;">
+    <div style="position:relative;">
+    <div>
+    <img src="img/score.png" style="margin-top: 20px; width:120px;" />
+  </div>
+  <div style="position:absolute;color:#fff; top:50px; margin-left:-3px;">
+  <div class="trend-font-700" id="total_score" style="width:100%; text-align:center; font-weight:bold;font-size:25px; color: #fff">
+  X / 10</div>
+  <div style="width:100%; text-align:center; font-size:12px;">Security</div>
+  <div style="width:100%; text-align:center; font-size:12px; line-height:50%;">Compliance</div>
+  <div style="width:100%; text-align:center; font-size:12px; line-height:50%;">Rating</div>
+</div>
+</div>
+</div>
+</div>
+-->
+</div>
+
+
+
+<!-- CONFORMITY DISTRIBUTION BAR -->
+<div class="trend-text-red trend-font-200" style="font-size: 18px; margin-top: 20px;">
+  <a href="#page06" style="text-decoration:none; ">
+    <i class="fa fa-list" style="color: #666; font-size: 10px;" aria-hidden="true"></i>
+  </a>
+  Agents Conformity Distribution
+</div>
+
+<div class="row" style="margin:0;">
+  <div class="col-lg-12">
+    <div class="trend-text-grey-dark trend-font-300" style="padding-right:10px; font-size: 12px; text-align: justify;">
+      <p>
+        The graph below shows the breakdown of all managed computers by their conformity score.
+        Computers with High Conformity have scores between 75-100% and are the expected standard.
+        Medium and Low conformity have scores between 50-74% and 25-49%, respectively.
+        Computers with scores between 0-24% are considered to be in a 'Caution' state.
+        Appropriate measures should be taken to improve their scores.
+      </p>
+    </div>
+  </div>
+</div>
+<div style="margin-top: 10px; padding-top: 10px;">
+  <div style="background-color: rgb(229,233,235); height: 1em; width: 100%;">
+    {% for level,info  in report_options.agent_average_conformity_slices.items() %}
+    <div class="{{info.css_style}}_bg" style="background-size: 23em 0.25em; height: 1em; float:left; width: {{info.percent}}%;"></div>
+    {% endfor %}
+  </div>
+</div>
+<div style="width: 100%">
+  <p aria-hidden="true"></p>
+</div>
+<div style="margin-top: 20px; padding-top: 20px">
+  {% for level,info  in report_options.agent_average_conformity_slices.items() %}
+  <div class="row" style="margin:0; font-size:12px; text-align: justify;">
+    <div style="float:left; padding-top: 5px; padding-left: 7px"><i class="fa fa-circle {{info.css_style}}" aria-hidden="true"></i></div>
+    <div class="trend-text-grey-ultradark" style="float:left;padding-left: 8px;position: relative;">{{level}} </div>
+    <div class="trend-text-grey" style="font-size:11px ;padding-left: 25px;position: relative;"> ({{info.count}} Agents)</div>
+  </div>
+  {% endfor %}
+</div>
+
+
+
+
+<div class="trend-text-red trend-font-200" style="font-size: 18px; margin-top: 20px;">
+  <a href="#page06" style="text-decoration:none; ">
+    <i class="fa fa-list" style="color: #666; font-size: 10px;" aria-hidden="true"></i>
+  </a>
+  Deep Security Overall View
+  <div class="trend-text-grey-ultradark trend-font-700" style="text-align: right; font-size: 12px; margin-top: 7px;">Managed Computers: {{report_data.num_managed_computers}} &nbsp; Total Computers: {{report_data.num_computers}}</div>
+
+</div>
+<div class="grey_box_with_bg trend-border-grey-light" style="margin: 6px 0 50px 0; padding: 20px; border-radius: 4px; position: relative;">
+  <div class="row trend-text-grey-ultradark">
+
+    <!-- <div class="col-md-1"></div>     -->
+
+    <div class="col-lg-2 text-center" style="font-size: 11px; margin-top: 20px">
+      {% for agent_version, _ in report_data.agent_release[:4] %}
+      {% if agent_version != "Others" %}
+      {{agent_version}}
+      <br />
+      {% endif %}
+      {% endfor %}
+      <BR/>
+    </div>
+
+    <div class="col-lg-3 text-center">
+      <table style="font-size:10px; width: 100%; margin: 6px 35px 0 27px; border-bottom: 0px;">
+        <tr>
+          {% for criticiy_level, info in report_options.dist_issues.items() %}
+          <td style="width:13px; border-bottom: 0px;"><i class="fa fa-circle trend-text-grey-ultradark {{info.css_style}}" aria-hidden="true"></i></td>
+          <!--total number of problems, Critical, High, Medium, Low, Warning-->
+          {% endfor %}
+        </tr>
+        <tr>
+          {% for criticiy_level, info in report_options.dist_issues.items() %}
+          <td style="border-bottom: 0px;">{{info.issues | length}}</td>
+          <!--total number of problems, Critical, High, Medium, Low, Warning-->
+          {% endfor %}
+        </tr>
+      </table>
+    </div>
+
+
+    <div class="col-lg-3 text-center" style="padding-left: 10px">
+      <div style="width: 60%; margin: 0 auto; padding-left: 20px">
+        <!--HERE IS THE RATING TO CHANGE [INSERT PERCETAGE]-->
+        <img src="img/compliancy_half_donut/{{ (100 * (report_data.num_managed_computers / report_data.num_computers)) | int}}.png" style="width: 100%; padding: 0; margin: -30px 10px -25px 0;" />
+      </div>
+    </div>
+
+
+    <div class="col-lg-3 text-center" style="padding-left: 10px">
+      <div style="width: 60%; margin: 0 auto; padding-left: 20px">
+        <!--HERE IS THE RATING TO CHANGE [INSERT PERCETAGE]-->
+        <img src="img/compliancy_half_donut/{{report_data.computers_average_conformity | int}}.png" style="width: 100%; padding: 0; margin: -30px 10px -25px 0;" />
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row trend-text-red" style="font-size:12px;">
+    <div class="col-lg-2 text-center">
+      Deep Security Agent
+      <BR/> Versions
+    </div>
+    <div class="col-lg-3 text-center">
+      Issues Found
+    </div>
+    <div class="col-lg-3 text-center" style="padding-left: 18px">
+      Managed Computer
+      <BR/> Ratio
+    </div>
+    <div class="col-lg-3 text-center" style="padding-left: 12px">
+      Overall Agents Conformity
+      <BR/> Rating
+    </div>
+    <div style="clear:both;"></div>
+    <!-- <div class="col-lg-1">
+    </div> -->
+  </div>
+  <div class="trend-text-grey-light" style="font-size: 10px; text-align: right; margin-bottom: -30px; margin-right: -10px">
+    {{report_options.customer_name}}/{{report_options.customer_host}}
+  </div>
+</div>
+
+
+</div>
+
+<div class="page">
+  <div class="trend-text-red trend-font-200" style="font-size: 18px; margin-top: 10px;">
+    <div style="float: left;">
+      <a href="#module_overview" style="text-decoration:none; ">
+        <i class="fa fa-list" style="color: #666; font-size: 10px;" aria-hidden="true"></i>
+      </a>
+      Deep Security Agent Details
+    </div>
+    <div class="trend-text-grey-ultradark trend-font-700" style="text-align: right; font-size: 12px; margin-top: 7px;">Managed Computers: {{report_data.num_managed_computers}} &nbsp; Total Computers: {{report_data.num_computers}}</div>
+  </div>
+
+
+  {% for key,value in report_data.agent_deployment_scenarios.items() %}
+  {% if value.num_computers_scenario > 0 %}
+  <div class="trend-border-grey-light grey_box_with_bg" style="margin-top: 12px; padding: 20px; border-radius: 4px;page-break-inside: avoid;">
+    <!--\\\\\\\\\ HIDE NON USED PLATAFORMS ///////////-->
+    <div class="row">
+
+      <div class="col-lg-2 trend-text-grey-ultradark text-center" style="padding-left: 15px;">
+        <i class="clearfix fa  fa-desktop  " style="margin-top:10px auto; display: inline-block; width: 100%; font-size: 50px;" aria-hidden="true"></i>
+      </div>
+      <div class="col-lg-4 text-center">
+        <div class="trend-text-grey-ultradark" style="font-size:18px;">
+          {{value.environment_percentage}}%
+        </div>
+        <div style="font-size: 8px; padding: 7px 0 0 62px;">
+          <!--THESE BALLS ARE THE VISUAL DISTRIBUTION, THE DARK ONES REPRESENT THIS TOTAL PCS
+          EX: There are 20 balls, 100% is equal to 20 dark balls, 50% equals to 10 dark balls and 10 grey balls-->
+          {% for i in range(value.environment_percentage|round|int // 5) %}
+          {% if i % 5 == 0 and i > 0 %}
+          &nbsp;
+          {% endif %}
+          {% if i == 10 %}
+          <BR/>
+          {% endif %}
+          <i class="fa fa-circle trend-text-grey-ultradark" style="margin-right:4px; " aria-hidden="true"></i>
+          {% endfor %}
+          {% for i in range(20 - value.environment_percentage|round|int // 5) %}
+          {% if (i + value.environment_percentage|round|int // 5) % 5 == 0 and i > 0 %}
+          &nbsp;
+          {% endif %}
+          {% if i == (10 - value.environment_percentage|round|int // 5) %}
+          <BR/>
+          {% endif %}
+          <i class="fa fa-circle trend-text-grey-light" style="margin-right:4px;" aria-hidden="true"></i>
+          {% endfor %}
+
+        </div>
+      </div>
+
+
+      <div class="col-lg-3 text-center trend-text-grey-ultradark" style="font-size: 24px; padding-right:0px;">
+
+        <div style="width: 60%; margin: 0 auto;">
+          <!--CHANGE THE xx.png between 0 - 100%-->
+          <!--HERE IS THE RATING TO CHANGE [INSERT PERCETAGE]-->
+          <img src="img/compliancy_half_donut/{{ (100 * (value.num_managed_computers) / value.num_computers_scenario ) | int }}.png" style="width: 100%; padding: 0; margin:0; margin: -30px 0 -35px 0;" />
+        </div>
+      </div>
+
+
+      <div class="col-lg-3 text-center trend-text-grey-ultradark" style="font-size: 24px; padding-right:20px;">
+        <div style="width: 60%; margin: 0 auto;">
+          <!--CHANGE THE xx.png between 0 - 100%-->
+          <!--HERE IS THE RATING TO CHANGE [INSERT PERCETAGE]-->
+          <img src="img/compliancy_half_donut/{{ value.result.conformity_rate|int }}.png" style="width: 100%; padding: 0; margin:0; margin: -30px -35px 0;" />
+        </div>
+      </div>
+
+      <div class="col-lg-1">
+      </div>
+    </div>
+    <div class="row trend-text-red" style="font-size:12px;">
+      <div class="col-lg-2 text-center" style="padding-left: 15px;">
+        <div class="trend-background-grey-ultradark" style="margin: 0 auto; border-radius: 4px; color:#fff; padding: 0 5px 3px 5px">
+          {{value.name}}
+          <BR/> Platform
+        </div>
+      </div>
+      <div class="col-lg-4 text-center">
+        Deep Security agents:&nbsp;{{value.num_managed_computers}}
+        <BR/>
+        <span class="trend-text-grey-dark" style="font-size: 10px;">Unmanaged computers: &nbsp;&nbsp;&nbsp;{{value.num_computers_scenario - value.num_managed_computers}}</span>
+      </div>
+      <div class="col-lg-3 text-center" style="padding-right:1px;">
+        Managed Computer
+        <BR/> Ratio
+      </div>
+      <div class="col-lg-3 text-center" style="padding-right:1px;">
+        Overall Agent Conformity
+        <BR/> Rating
+      </div>
+      <div class="col-lg-1">
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+
+
+
+
+<div class="page">
+  <!--\\\\\\\\\ HIDE NON USED PLATAFORMS ///////////-->
+  <div class="trend-text-red trend-font-300" style="font-size: 30px; padding-top: 30px;">
+    <a name="page06">2. Enviroment modules overview</a>
+  </div>
+
+  <div class="col-lg-2"></div>
+  <div class="row"></div>
+
+ 
+  <div class="row" style="padding: 10px 15px 0 15px;">
+    <div class="col-lg-10" style="padding-right: 20px;">
+      <div class="trend-text-grey-dark trend-font-300" style="font-size: 11px; text-align:justify;">
+       This section shows an overall score for each of the used modules, if a module is turned off, the score will be considered as zero.
+      </div>
+    </div>
+  </div>
+
+
+  {% for key,value in report_data.module_results.items() %}
+  {%if key != "total"%}
+  <div class="row" style="padding: 10px 15px 0 15px;">
+    <div class="col-lg-10" style="padding-right: 20px;">
+      <div>
+        <div class="trend-text-red trend-font-300" style="float:left; font-size: 18px; margin: 0;">
+          <a href="#compliancyresult_FRS" style="text-decoration:none;"><i class="fa fa-list" style="color: #666; font-size: 9px" aria-hidden="true"></i></a> {{report_options.pretty_module_names[key]}}
+        </div>
+       
+        <div class="trend-text-grey-dark trend-font-300" style="font-size: 10px; text-align: right; padding-bottom: 2px; visibility: hidden;">
+          Fully conformant agents: {{report_data.fully_compliant_modules_count[key]}} out of {{report_data.num_managed_computers|int}} of agents
+        </div>
+        
+      </div>
+      <div class="trend-text-grey-dark trend-font-300" style="font-size: 11px; text-align:justify;">
+        {{report_options.module_descriptions[key]}}
+      </div>
+    </div>
+    <div class="col-lg-2 trend-text-grey-dark" style="text-align:center;">
+      <div style="font-size: 24px;">
+
+        <div style="overflow: hidden; width: 70%; margin: 0 auto;">
+          <!--HERE IS THE RATING TO CHANGE [INSERT PERCETAGE]-->
+          <img src="img/compliancy_half_donut/{{value.conformity_rate|int}}.png" style="width: 100%; padding: 0; margin:-10px 5px -15px 0;" />
+        </div>
+      </div>
+      <div class="trend-text-grey-dark-light trend-font-300" style="font-size: 8px;">Conformity Score</div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% endfor %}
+
+
+
+
+</div>

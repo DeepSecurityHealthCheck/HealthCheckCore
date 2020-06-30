@@ -1,0 +1,94 @@
+---
+#This yaml has the object to define the values related to the WEB REPUTATION
+#configuration specified per computer
+#expected accordingly the deep security best practice guide (v11.0).
+#Version 0.1 04-01-2019
+
+#The title is used for python scripts to call the information related to the
+#module. Please, do not change it.
+title: "web_reputation"
+descrption: ""
+web_reputation:
+  #It checks if web reputation module is activated.
+  web_reputation.state:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 10
+    #It has six possible operators. For this comparison, it is equal.
+    operator: EQUAL
+    operand: "on"
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "web_reputation"
+      failure_item: "State is off"
+      text: >
+        "The Web Reputation module provides content filtering by blocking access
+        to malicious domains and known communication and control (C&C) servers
+        used by criminals."
+  #The default security level “Medium” is suitable for most users.
+  #However, if you want further security, you can adjust it to the “High” level.
+  computer_settings.web_reputation_setting_security_level.value:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 8
+    #It has six possible operators. For this comparison, it is equal.
+    operator: NOT_EQUAL
+    #It is the recommended value for this topic in the DS-BPG.
+    operand: "Low"
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "web_reputation"
+      failure_item: "Security level should be higher than 'Low'"
+      text: >
+        "The default security level “Medium” is suitable for most users.
+        However, if you want further security, you can adjust it to the “High”
+        level. "
+  #If you have specific web pages to allow or block, configure them in the Exceptions tab.
+  #By default, Web Reputation is enabled to port 80 and 8080.
+  #If you have an HTTP proxy server using other ports, configure it
+  #in the Advanced tab.
+  computer_settings.web_reputation_setting_monitor_port_list_id.value:
+    weight: 6
+    operator: NOT_EQUAL
+    operand: "80,8080" #Default Value
+    description:
+      module: "web_reputation"
+      failure_item: "Enable Web Reputation to custom ports for HTTP proxy"
+      text: >
+        "By default, Web Reputation is enabled to port 80 and
+        8080. If you have an HTTP proxy server using other ports, configure it in
+        the Advanced tab. "
+  #Include internal company URLs in the Allowed list under Exceptions.
+  computer_settings.web_reputation_setting_allowed_urls.value:
+    weight: 7
+    operator: NOT_EQUAL
+    #Here will it be the company`s website address.
+    operand: "" #Change it.
+    description:
+      module: "web_reputation"
+      failure_item: "Include internal URLs in the 'Allowed' list"
+      text: >
+        "It's a best practice to include internal company URLs in the
+        Allowed list under Exceptions because it will decrease the overload.
+        "
+  #Web Reputation queries will go to the Smart Protection Server (if enabled)
+  #or to our cloud WRS servers. It’s recommended to set up a local Smart
+  #Protection Server in house to limit the amount of required internet queries,
+  #which can lead to performance degradation.
+  computer_settings.web_reputation_setting_smart_protection_local_server_enabled.value:
+    weight: 7
+    operator: EQUAL
+    operand: "true" #Change it.
+    description:
+      module: "web_reputation"
+      failure_item: "(On-premise) Enable local Smart protection Server queries"
+      text: >
+        "Web Reputation queries will go to the Smart Protection Server
+        (if enabled) or to our cloud WRS servers. It’s recommended to set up a
+        local Smart Protection Server in house to limit the amount of required
+        internet queries, which can lead to performance degradation. "
+...

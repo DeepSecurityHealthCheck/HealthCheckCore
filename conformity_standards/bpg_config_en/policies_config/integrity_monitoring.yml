@@ -1,0 +1,48 @@
+---
+#This yaml has the object to define the values related to the INTEGRITY MONITORING
+#configuration that is specified per computer
+#expected accordingly the deep security best practice guide (v11.0).
+#Version 0.1 04-01-2019
+
+#The title is used for python scripts to call the information related to the
+#module. Please, do not change it.
+title: "integrity_monitoring"
+descrption: ""
+integrity_monitoring:
+  #It checks if integrity monitoring module is activated.
+  integrity_monitoring.state:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 10
+    #It has six possible operators. For this comparison, it is not equal.
+    operator: NOT_EQUAL
+    operand: "off"
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "integrity_monitoring"
+      failure_item: "State is off"
+      text: >
+       "It's necessary to monitor the operating system, application files, and
+       directories to maintain the integrity of the data on your server."
+  #Automatically implement Integrity Monitoring Rule Recommendations (when possible)
+  policy_settings.integrity_monitoring_setting_auto_apply_recommendations_enabled.value:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 6
+    #It has six possible operators. For this comparison, it is equal.
+    operator: EQUAL
+    #It is the recommended value for this topic in the DS-BPG.
+    operand: "Yes" #Yes or No
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "integrity_monitoring"
+      failure_item: Auto apply recommendations is enabled"
+      text:
+        "As a best practice, recommended rules should be assigned to the policy
+         and not directly to computers. It's better not to apply the rules
+         automatically before testing it. "
+...

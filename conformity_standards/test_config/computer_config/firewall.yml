@@ -1,0 +1,22 @@
+---
+#This yaml has the object to define the values related to the FIREWALL
+#configuration specified per computer
+#expected accordingly the deep security best practice guide (v11.0).
+#Version 0.1 04-01-2019
+
+#The title is used for python scripts to call the information related to the
+#module. Please, do not change it.
+title: "firewall"
+descrption: ""
+firewall:
+  #It checks if firewall module is activated.
+  firewall.state:
+    weight: 10
+    operator: EQUAL
+    operand: "on"
+    description:
+      module: "firewall"
+      failure_item: "State is off"
+      text: >
+        "It's necessary to activate firewall module for controlling incoming
+        and outgoing traffic."

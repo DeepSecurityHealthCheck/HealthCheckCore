@@ -1,0 +1,13 @@
+anti_malware : "Anti-Malware module protects your Windows and Linux workloads against malicious software, such as malware, spyware, and Trojans. Powered by the Trend Micro Smart Protection Network, the Anti-Malware module helps you instantly identify and remove malware and blacklist domains known to be command and control servers."
+
+web_reputation : "The majority of today’s attacks start with a visit to a URL that’s carrying a malicious payload. The Web Reputation module provides content filtering by blocking access to malicious domains and known communication and control (C&C) servers used by criminals. The Web Reputation module taps into the Trend Micro Smart Protection Network, which identifies new threats quickly and accurately."
+
+integrity_monitoring : "The Integrity Monitoring module provides the ability to track both authorized and unauthorized changes made to an instance and enables you to receive alerts about unplanned or malicious changes. The ability to detect unauthorized changes is a critical component in your cloud security strategy because it provides visibility into changes that could indicate the compromise of an instance."
+
+log_inspection : "The Log Inspection module captures and analyzes system logs to provide audit evidence for PCI DSS or internal requirements that your organization may have. It helps you to identify important security events that may be buried in multiple log entries. You can configure Log Inspection to forward suspicious events to an SIEM system or centralized logging server for correlation, reporting, and archiving."
+
+application_control : "The Application Control module monitors changes - \"drift\" or \"delta\" - compared to the computer’s original software. Once application control is enabled, all software changes are logged and events are created when it detects new or changed software on the file system. When Deep Security Agent detects changes, you can allow or block the software, and optionally lock down the computer."
+
+firewall : "The Firewall Module is for controlling incoming and outgoing traffic and it maintains firewall event logs for audits."
+
+intrusion_prevention : "The Intrusion Prevention module inspects incoming and outgoing traffic to detect and block suspicious activity. This prevents exploitation of known and zero-day vulnerabilities. Deep Security supports \"virtual patching\": you can use Intrusion Prevention rules to shield from known vulnerabilities until they can be properly patched. You can configure Deep Security to automatically receive new rules that shield newly discovered vulnerabilities."

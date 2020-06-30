@@ -1,0 +1,59 @@
+---
+#This yaml has the object to define the values related to the INTRUSION PREVENTION
+#configuration that is specified per computer
+#expected accordingly the deep security best practice guide (v11.0).
+#Version 0.1 04-01-2019
+
+#The title is used for python scripts to call the information related to the
+#module. Please, do not change it.
+title: "intrusion_prevention"
+descrption: ""
+intrusion_prevention:
+  #It checks if intrusion prevention module is activated.
+  intrusion_prevention.state:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 10
+    #It has six possible operators. For this comparison, it is equal.
+    operator: NOT_EQUAL
+    operand: "off"
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "intrusion_prevention"
+      failure_item: "State is off"
+      text: >
+        "The Intrusion Prevention module inspects incoming and outgoing traffic
+        to detect and block suspicious activity. This prevents exploitation of
+        known and zero-day vulnerabilities."
+  #Automatically implement Intrusion Prevention Recommendations (when possible)
+  policy_settings.intrusion_prevention_setting_auto_apply_recommendations_enabled.value:
+    #Weight can be changed accordingly with the knowledge of the analyst
+    #about the customer environment, giving to it a right metric.
+    #It is the possible weight that the configuration has in the final grade of the environment.
+    weight: 6
+    #It has six possible operators. For this comparison, it is equal.
+    operator: EQUAL
+    #It is the recommended value for this topic in the DS-BPG.
+    operand: "Yes" #Yes or NO
+    #It is the information that will be shown in the report. The values below
+    #create the report information.
+    description:
+      module: "intrusion_prevention"
+      failure_item: "'Auto apply recommendations' should be enabled"
+      text: >
+        "Use Recommendation Scan to apply the necessary rules for the best
+        protection and performance.  However, it's not
+        recommended to apply the rules automatically."
+  intrusion_prevention.rule_ids:
+    weight: 6
+    operator: LENGTH_NOT_GREATER_THAN
+    operand:  300
+    description:
+      module: "intrusion_prevention"
+      failure_item: "More than 300 rules applied"
+      text: >
+        "Assigning more than 300 rules can negatively affect the systems's
+        performance "        
+...

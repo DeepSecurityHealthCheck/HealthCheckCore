@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% include "header.html.j2" %}
+</head>
+
+<body>
+
+
+  <!-- Cover of report -->
+  {% include "cover.html.j2" %}
+  {% include "footer.html.j2" %}
+
+  <!--  General Overview-->
+  {% include "overview.html.j2" %}
+  {% include "footer.html.j2" %}
+
+  <!-- Deep Security conformity -->
+  {% include "ds_conformity.html.j2" %}
+  {% include "footer.html.j2" %}
+
+  <!-- Available fixes -->
+  {% include "available_fixes.html.j2" %}
+  {% include "footer.html.j2" %}
+
+  <!-- Technical summary -->
+  {% include "tech_summary.html.j2" %}
+  {% include "footer.html.j2" %}
+
+
+  <!-- Security overview -->
+<!--
+  % include "sec_overview.html.j2" %
+  % include "footer.html.j2" % -->
+
+  <!-- Appendix -->
+
+  {% include "appendix.html.j2" %}
+  {% include "footer.html.j2" %}
+</html>

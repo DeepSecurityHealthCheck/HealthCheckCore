@@ -1,0 +1,12 @@
+title: "check-for-security-updates"
+description: "セキュリティアップデートの確認（日次）"
+check-for-security-updates:
+
+  schedule_details.recurrence_type:
+    weight: 7
+    operator: EQUAL
+    operand: "daily"
+    description:
+      module: "予約タスク: セキュリティアップデートの確認"
+      failure_item: "週次単位より長い間隔での実行"
+      text: "毎日「セキュリティアップデートの確認」を予約タスクで実行することを強く推奨します。 (63ページ - DSBPG)"
