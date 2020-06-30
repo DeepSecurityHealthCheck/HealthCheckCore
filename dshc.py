@@ -354,7 +354,8 @@ def main(options):
         The variable for those modules on a computer becomes None
         """
     except Exception as e:
-        raise Exception("Main A" + str(e))
+        var = traceback.format_exc()
+        raise Exception("Main A {} \n {}".format(str(var), str(e)))
         
 
     try:
@@ -451,8 +452,8 @@ def main(options):
 
 
     except Exception as e:
-        traceback.print_exc(e)
-        raise Exception("Main B" + str(e))
+        var = traceback.format_exc()
+        raise Exception("Main B {} \n {}".format(str(var), str(e)))
         
         
 
@@ -520,6 +521,7 @@ def process_cloud():
 
 
 def start(modules=[], language=constants.DEFAULT_LANGUAGE, remote="", private_key_password=""):
+    retr = None
     try:
         parser = argparse.ArgumentParser(
             prog="dshc",
@@ -561,14 +563,16 @@ def start(modules=[], language=constants.DEFAULT_LANGUAGE, remote="", private_ke
         for config in USER_CONFIG_FILES:
             if os.path.exists(config) is False:
                 print("{} is missing!".format(config))
-                exit(1)
+                var = traceback.format_exc()
+                raise Exception("Start B {} \n {}".format(str(var))
 
-        ret = main(arg_options)
+        retr = main(arg_options)
 
     except Exception as e:
-        raise Exception("Start A" + str(e))
+        var = traceback.format_exc()
+        raise Exception("Start A {} \n {}".format(str(var), str(e)))
 
-    return ret
+    return retr
 
 if __name__ == '__main__':
     if os.environ.get('AWS', False):

@@ -21,6 +21,8 @@ from base64 import b64encode
 import random
 import argparse
 from colorama import init, Fore
+
+import traceback
 init(autoreset=True)
 
 from tqdm import tqdm
@@ -386,8 +388,8 @@ def unpack_data(file_name, private_key_path=None, key_password=None):
         try:
             data = lzma.decompress(compressed)
         except Exception as e:
-            print(Fore.RED + "Error while decompressing " + str(e))
-            exit(667)
+            var = traceback.format_exc()
+            raise Exception("Decompress A {} \n {}".format(str(var), str(e)))
 
     print("Done!")
     data = b""
@@ -395,7 +397,8 @@ def unpack_data(file_name, private_key_path=None, key_password=None):
         data = pickle.loads(data)
     except Exception as e:
         print(Fore.RED + "Error while unserializing")
-        raise Exception("Serialization error")
+        var = traceback.format_exc()
+        raise Exception("Unpack Serial {} \n {}".format(str(var), str(e)))
 
     return data
 
