@@ -6,7 +6,7 @@ __pycache__
 *.un~
 *~
 *.pyc
-api_config.yml
+config/api_config.yml
 config/report_details.yml
 *.pdf
 /*.tex

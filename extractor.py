@@ -487,6 +487,7 @@ def get_report(generation_id, check_connection=True):
                 #Not ready
                 print(".", end='')
                 continue
+            
             try:
                 url = req.content.decode('utf-8')
             except:
