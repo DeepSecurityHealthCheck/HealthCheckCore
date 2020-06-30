@@ -245,11 +245,8 @@ def pack_data(data_migrate=None, send_now=True, unencrypted=False):
             "access. the file is extremelly secure it can be manipulated anywere".format(Fore.LIGHTCYAN_EX,
             Fore.LIGHTYELLOW_EX,output_name,Fore.LIGHTCYAN_EX))
 
-
             print(Fore.LIGHTGREEN_EX + "Package was saved successfully as {} !".format(output_name))
-        else:
-            print(Fore.YELLOW + "The report was successfully generated, the data packet was not saved locally")
-    
+            
     else:
             try:
                 with open(output_name+".dat","wb") as out:
@@ -392,15 +389,15 @@ def unpack_data(file_name, private_key_path=None, key_password=None):
             raise Exception("Decompress A {} \n {}".format(str(var), str(e)))
 
     print("Done!")
-    data = b""
+    ret_data = b""
     try:
-        data = pickle.loads(data)
+        ret_data = pickle.loads(data)
     except Exception as e:
         print(Fore.RED + "Error while unserializing")
         var = traceback.format_exc()
         raise Exception("Unpack Serial {} \n {}".format(str(var), str(e)))
 
-    return data
+    return ret_data
 
 
 def migrate_package():

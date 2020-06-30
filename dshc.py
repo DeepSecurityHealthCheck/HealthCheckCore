@@ -521,7 +521,7 @@ def process_cloud():
 
 
 def start(modules=[], language=constants.DEFAULT_LANGUAGE, remote="", private_key_password=""):
-    retr = None
+    return_value = None
     try:
         parser = argparse.ArgumentParser(
             prog="dshc",
@@ -564,15 +564,15 @@ def start(modules=[], language=constants.DEFAULT_LANGUAGE, remote="", private_ke
             if os.path.exists(config) is False:
                 print("{} is missing!".format(config))
                 var = traceback.format_exc()
-                raise Exception("Start B {} \n {}".format(str(var))
+                raise Exception("Start B {} \n {}".format(str(var)))
 
-        retr = main(arg_options)
+        return_value = main(arg_options)
 
     except Exception as e:
         var = traceback.format_exc()
         raise Exception("Start A {} \n {}".format(str(var), str(e)))
 
-    return retr
+    return return_value
 
 if __name__ == '__main__':
     if os.environ.get('AWS', False):
