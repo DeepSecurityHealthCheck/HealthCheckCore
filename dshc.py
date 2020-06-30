@@ -508,12 +508,16 @@ def process_cloud():
                     dshc_cloud.write_new_report(res, generation_id)
                     count = 0
                 except Exception as e:
-                    print(e)
+                    print("Error while processing package, Please check if your extractor version is at [{}]"
+                    "\n debug info: [Id]: {} -- [Exception] : {}".format(str(constants.EXTRACTOR_VERSION),str(generation_id),str(e)))
+                    dshc_cloud.remove_message(params[i])
                     continue
                 dshc_cloud.remove_message(params[i])
+        else:
+            count += 1
         
         time.sleep(wait_time) 
-        count += 1
+        
         
 
 
