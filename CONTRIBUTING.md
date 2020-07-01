@@ -78,6 +78,6 @@ Some tips for good pull requests:
 
 ## Commit Guideline
 * Consider using `ADD`, `UPD`, `FIX`, `REM` tags before the commit description
-  to indicate what is the objective of the commit, ex. `ADD: Added new rocket launcher feature to the beam system.`
+  to indicate what is the objective of the commit, ex. `ADD: Added new rocket launcher feature to the beam system after noticing that ants could exploit the Foom Generator using the Maxwell Injector.`
 * Use concise descriptions that explain what is inside each commit.
 * Commits may have multiple tags for each modification.
