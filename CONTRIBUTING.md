@@ -68,7 +68,7 @@ Some tips for good pull requests:
   everyone will be happy.
 * For speculative changes, consider opening an issue and discussing it first.
   If you are suggesting a behavioral or API change, make sure you get explicit
-  support from a protobuf team member before sending us the pull request.
+  support from a DSHC team member before sending us the pull request.
 * Provide a good PR description as a record of what change is being made and
   why it was made. Link to a GitHub issue if it exists.
 * Don't fix code style and formatting unless you are already changing that
