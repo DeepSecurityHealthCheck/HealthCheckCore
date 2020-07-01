@@ -1,3 +1,3 @@
-host: https://app.deepsecurity.trendmicro.com/api                                
-api-secret-key: 48099067-72D3-5BA3-D24C-4817FB2DE13C:C2ABAFFF-5527-7817-881E-3460F2E62309:qDRXbNixTe13JRgOHRdm4LHeHXIBazsxzLG0721NDfs=
-api-version: 'v1' #Example 'v1'
+host: https://<Your DSM Hostname or IP>:<DSM Port>/api #Your DSM hostname
+api-secret-key: #Your API KEY
+api-version: 'v1' #Default 'v1'
