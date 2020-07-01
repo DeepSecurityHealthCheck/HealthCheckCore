@@ -570,12 +570,12 @@ def print_motd():
             if req.status_code == 200:
                 dec = json.loads(req.content.decode('ascii','ignore'))
                 if not dec == "":
-                    print(Fore.LIGHTBLUE_EX + "\nMessage of the day")
-                    print(Fore.LIGHTMAGENTA_EX + "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
-                    print(Fore.LIGHTGREEN_EX + "{}".format(str(dec["body"])))
-                    print(Fore.LIGHTMAGENTA_EX + "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
+                    print(Fore.LIGHTBLUE_EX     + "\nMessage of the day")
+                    print(Fore.LIGHTMAGENTA_EX  + "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
+                    print(Fore.LIGHTGREEN_EX    + "{}".format(str(dec["body"])))
+                    print(Fore.LIGHTMAGENTA_EX  + "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
                     break
-                
+
         except:
             pass
 
