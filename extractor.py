@@ -563,17 +563,19 @@ def manual_submit(file_name):
 
  
 def print_motd():
+    dec = ""
     for i in range(10):
         try:
             req = requests.get(api_url.format("motd",""))
             if req.status_code == 200:
-                dec = json.loads(req.content.decode('utf-8','ignore'))
+                dec = json.loads(req.content.decode('ascii','ignore'))
                 if not dec == "":
                     print(Fore.LIGHTBLUE_EX + "\nMessage of the day")
                     print(Fore.LIGHTMAGENTA_EX + "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
-                    print(Fore.LIGHTGREEN_EX + "{}".format(str(dec["body"].encode('ascii',errors='ignore').decode("ascii"))))
+                    print(Fore.LIGHTGREEN_EX + "{}".format(str(dec["body"])))
                     print(Fore.LIGHTMAGENTA_EX + "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
                     break
+                
         except:
             pass
 
