@@ -4,10 +4,10 @@ Automated Deep Security Health Check, Currently in **Beta**
 ![Project build](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoicEQrRGdHTllVdU5iUVBCRm13VUNBVUJydFl5VG9vRHZtcFMwK3V3TE0rOXVOWVNQOHNiRHR0OWpRdmpHMXhXU1NUMnowbFV2RTNjVXcraEhVRUxUdkhnPSIsIml2UGFyYW1ldGVyU3BlYyI6ImZNUzNUNG83M0xpbXFzOFkiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
 ## QUICKSTART
-Checkout QUICKSTART.md
+Checkout [QUICKSTART.md](./QUICKSTART.md)
 
 ## PREREQUESITES
-- Docker
+- [Docker](https://docs.docker.com/get-docker/)
 - PyInstaller to generate executables for the extractor tool
 - The complete set of prerequesites and dependencies can be found in the `Dockerfile`. We __advise against__ running the tool without docker.
 
@@ -44,7 +44,7 @@ The configuration files for the program are placed in the tool's `config` direct
   - `api-version` Version in use by the API
 
 EXAMPLE
-```                                                           
+```                                                          
   host: https://app.deepsecurity.trendmicro.com/api                        
   api-secret-key: myscretkey
   api-version: 'v1' #Example 'v1'       
