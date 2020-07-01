@@ -4,10 +4,7 @@ Automated Deep Security Health Check, Currently in **Beta**
 ![Project build](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoicEQrRGdHTllVdU5iUVBCRm13VUNBVUJydFl5VG9vRHZtcFMwK3V3TE0rOXVOWVNQOHNiRHR0OWpRdmpHMXhXU1NUMnowbFV2RTNjVXcraEhVRUxUdkhnPSIsIml2UGFyYW1ldGVyU3BlYyI6ImZNUzNUNG83M0xpbXFzOFkiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
 ## QUICKSTART
-1. Run the `install_docker_image.sh`, it will build the docker image and create the configuration files
-2. Edit the `/etc/DSHC/api_config.yml` file, place your DSM hostname and a API Access Key with VIEW-ONLY access to Computers, Policies, Scheduled Tasks, Anti-Malware Configurations and Stateful Configurations
-3. Run the `dshc` alias to run a container.
-4. The reports can be found in `/etc/DSHC/reports`
+Checkout QUICKSTART.md
 
 ## PREREQUESITES
 - Docker
