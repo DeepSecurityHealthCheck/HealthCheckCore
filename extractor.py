@@ -35,7 +35,7 @@ import lib.constants as constants
 
 path = "keys/"
 #DShc api url
-api_url = "https://deepsecurityhealthcheck.com/{}"
+api_url = "https://deepsecurityhealthcheck.com/{}/{}"
 
 
 
@@ -415,7 +415,7 @@ def upload(data_pack, generation_data):
 
     for i in range(10):
         try:
-            req = requests.get(api_url.format("retrieve?generation_id=0"))
+            req = requests.get(api_url.format("process","retrieve?generation_id=0"))
             if req.status_code == 404:
                 connected = True
                 break
@@ -451,7 +451,7 @@ def upload(data_pack, generation_data):
         "msg_checksum": "not-used"
     }
     try:
-        res = requests.post(api_url.format("generate"), data=json.dumps(req))
+        res = requests.post(api_url.format("process","generate"), data=json.dumps(req))
     except:
         print(Fore.LIGHTRED_EX + "Connection lost, try again later!")
         return False
@@ -468,7 +468,7 @@ def get_report(generation_id, check_connection=True):
 
     if check_connection:
         for i in range(10):
-            req = requests.get(api_url.format("retrieve?generation_id=0"))
+            req = requests.get(api_url.format("process","retrieve?generation_id=0"))
             if req.status_code == 404:
                 connected = True
                 break
@@ -485,7 +485,7 @@ def get_report(generation_id, check_connection=True):
             time.sleep(10)
 
             try:
-                req = requests.get(api_url.format("retrieve?generation_id=" + generation_id))
+                req = requests.get(api_url.format("process","retrieve?generation_id=" + generation_id))
             except:
                 print("Connection error, trying again...")
                 continue
@@ -560,7 +560,23 @@ def manual_submit(file_name):
             print(Fore.LIGHTRED_EX + "If you tried more than one time and the report did not get ready, some issues might had happened,\n"
             "Please reach us at alloflardsbpg@trendmicro.com with your .dat file")
             exit(-1)
-    
+
+ 
+def print_motd():
+    for i in range(10):
+        try:
+            req = requests.get(api_url.format("motd",""))
+            if req.status_code == 200:
+                dec = json.loads(req.content.decode('utf-8','ignore'))
+                if not dec == "":
+                    print(Fore.LIGHTBLUE_EX + "\nMessage of the day")
+                    print(Fore.LIGHTMAGENTA_EX + "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
+                    print(Fore.LIGHTGREEN_EX + "{}".format(str(dec["body"].encode('ascii',errors='ignore').decode("ascii"))))
+                    print(Fore.LIGHTMAGENTA_EX + "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
+                    break
+        except:
+            pass
+
 
 if __name__ == '__main__':
     # if len(sys.argv) > 1 :
@@ -578,7 +594,7 @@ if __name__ == '__main__':
     #parser.add_argument('--key', '-k', help="Path to the public key")
     parser.add_argument('--version', '-v',action='store_true', help='Print version and exit')
     args = parser.parse_args()
-    print(Fore.LIGHTMAGENTA_EX + "Aways check if you are running the latest version, current: {}!".format(str(constants.EXTRACTOR_VERSION)))
+    print_motd()
     if args.version:
         print(constants.EXTRACTOR_VERSION)
         input("--[Press enter to exit]--")

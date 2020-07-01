@@ -2,7 +2,7 @@ from colorama import init, Fore
 import os
 EXTRACTOR_VERSION = "1.8.4"
 EXTRACTOR_WIZARD_HEADER = """
-DSHC EXTRACTOR v{}
+Aways check if you are running the latest version, current: {} !
 By Running this tool you state that:
 {}* YOU READ the INSTRUCTIONS and,
 * AGREED with the TERMS AND CONDITIONS in the EXTRACTOR_README FILE 
