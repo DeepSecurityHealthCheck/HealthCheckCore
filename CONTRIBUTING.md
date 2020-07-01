@@ -11,13 +11,9 @@ first.
 ### Contributor License Agreements
 Contributions to this project will be automatically be assumed as GNU LESSER GENERAL PUBLIC LICENSE (This project license).
 
-### Coding Style
-This project *aims* to follows [PEP-8 Coding Style Guides](https://www.python.org/dev/peps/pep-0008/).
-Before sending out your pull request, please familiarize yourself with the
-corresponding style guides and make sure the proposed code change is style
-conforming.
 
-## Contributing Process
+
+# Contributing Process
 Most pull requests should go to the master branch and the change will be
 included in the next major/minor version release (e.g., 3.6.0 release).
 
@@ -34,7 +30,13 @@ still send the pull request again once you have time to work on it.
 Once a pull request is merged, we will take care of the rest and get it into
 the final release.
 
-# Code reviews
+## Coding Style
+This project *aims* to follows [PEP-8 Coding Style Guides](https://www.python.org/dev/peps/pep-0008/).
+Before sending out your pull request, please familiarize yourself with the
+corresponding style guides and make sure the proposed code change is style
+conforming.
+
+## Code reviews
 All submissions, including submissions by project members, require review. We
 use Github pull requests for this purpose.
 
