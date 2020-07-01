@@ -19,10 +19,7 @@ conforming.
 
 ## Contributing Process
 Most pull requests should go to the master branch and the change will be
-included in the next major/minor version release (e.g., 3.6.0 release). If you
-need to include a bug fix in a patch release (e.g., 3.5.2), make sure it’s
-already merged to master, and then create a pull request cherry-picking the
-commits from master branch to the release branch (e.g., branch 3.5.x).
+included in the next major/minor version release (e.g., 3.6.0 release).
 
 For each pull request, a DSHC team member will be assigned to review the
 pull request. For minor cleanups, the pull request may be merged right away
@@ -41,10 +38,11 @@ the final release.
 All submissions, including submissions by project members, require review. We
 use Github pull requests for this purpose.
 
+## Pull Request Guidelines
 Some tips for good pull requests:
 * Use our code
   [style guide](https://www.python.org/dev/peps/pep-0008/).
-  When in doubt, try to stay true to the existing code of the project.
+  When in doubt, try looking for other good style guides like [Google style guide](https://google.github.io/styleguide/pyguide.html)..
 * Write a descriptive commit message. What problem are you solving and what
   are the consequences? Where and what did you test? Some good tips:
   [here](http://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message)
@@ -54,13 +52,6 @@ Some tips for good pull requests:
   (`git rebase -i`) such that your PR is a single commit on top of the current
   HEAD. This make reviewing the code so much easier, and our history more
   readable.
-* Make sure that all tests are passing before approval.
-* Apply the appropriate language label (e.g., C++, Java, Python, etc.) to the
-  pull request. This will make it easier to identify which languages the pull
-  request affects, allowing us to better identify appropriate reviewer, create
-  a better release note, and make it easier to identify issues in the future.
-
-## Pull Request Guidelines
 * Create small PRs that are narrowly focused on addressing a single concern.
   We often receive PRs that are trying to fix several things at a time, but if
   only one fix is considered acceptable, nothing gets merged and both author's
@@ -74,14 +65,6 @@ Some tips for good pull requests:
 * Don't fix code style and formatting unless you are already changing that
   line to address an issue. PRs with irrelevant changes won't be merged. If
   you do want to fix formatting or style, do that in a separate PR.
-* Unless your PR is trivial, you should expect there will be reviewer comments
-  that you'll need to address before merging. We expect you to be reasonably
-  responsive to those comments, otherwise the PR will be closed after 2-3 weeks
-  of inactivity.
-* Maintain clean commit history and use meaningful commit messages. PRs with
-  messy commit history are difficult to review and won't be merged. Use rebase
-  -i upstream/master to curate your commit history and/or to bring in latest
-  changes from master (but avoid rebasing in the middle of a code review).
 * Keep your PR up to date with upstream/master (if there are merge conflicts,
   we can't really merge your change).
 * All tests need to be passing before your change can be merged. We recommend
@@ -89,3 +72,10 @@ Some tips for good pull requests:
   Ultimately, the green signal will be provided by our testing infrastructure.
   The reviewer will help you if there are test failures that seem not related
   to the change you are making.
+
+
+## Commit Guideline
+* Consider using `ADD`, `UPD`, `FIX`, `REM` tags before the commit description
+  to indicate what is the objective of the commit, ex. `ADD: Added new rocket launcher feature to the beam system.`
+* Use concise descriptions that explain what is inside each commit.
+* Commits may have multiple tags for each modification.
