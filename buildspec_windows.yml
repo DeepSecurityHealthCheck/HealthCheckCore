@@ -1,0 +1,37 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+  pre_build:
+    commands:
+      - echo "Pre build"
+      - pip3 install pyinstaller
+      - pip3 install --upgrade -r requirements.txt --ignore-installed
+      - pip3 install ./vendor/SDK/ --ignore-installed
+      - mkdir keys
+      - aws s3 cp s3://dshc-public/PUBLIC_key.pem ./keys
+  build:
+    commands:
+      - echo "Building"         
+      - pyinstaller.exe -F extractor.py  --icon=tmlogo.ico
+      # --hidden-import=pkg_resources.py2_warn --hidden-import=deepsecurity -p c:\python37\lib\site-packages\requests -p c:\python37\lib\site-packages\colorama
+  post_build:
+    commands:
+      - echo "Post build"
+      - python.exe utils/gen_config.py
+      - mkdir dist/keys
+      - cp keys/* dist/keys
+      - mkdir dist/config
+      - cp config/api_config.yml dist/config/
+      - cp docs/EXTRACTOR_README.md dist/
+      - $EXTRACTOR_VERSION=((cat .\lib\constants.py | Select-String -Pattern 'EXTRACTOR_VERSION =') -Split " ")[2]
+      - $EXTRACTOR_VERSION=($EXTRACTOR_VERSION -replace'\"')
+      - $ZIP_NAME=("extractor$EXTRACTOR_VERSION-windows.zip")
+      - Add-Type -A System.IO.Compression.FileSystem
+      - [IO.Compression.ZipFile]::CreateFromDirectory('.\dsbpg\dist', $ZIP_NAME)
+      - aws s3 cp $ZIP_NAME s3://dshc-public/extractors/
+
+        
+      
