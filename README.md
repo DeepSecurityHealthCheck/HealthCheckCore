@@ -2,6 +2,7 @@
 
 Automated Deep Security Health Check, Currently in **Beta**     
 ![Project build](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoicEQrRGdHTllVdU5iUVBCRm13VUNBVUJydFl5VG9vRHZtcFMwK3V3TE0rOXVOWVNQOHNiRHR0OWpRdmpHMXhXU1NUMnowbFV2RTNjVXcraEhVRUxUdkhnPSIsIml2UGFyYW1ldGVyU3BlYyI6ImZNUzNUNG83M0xpbXFzOFkiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+[![Gitter](https://badges.gitter.im/deepsecurity-healthcheck/community.svg)](https://gitter.im/deepsecurity-healthcheck/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ## QUICKSTART
 Checkout [QUICKSTART.md](./QUICKSTART.md)
