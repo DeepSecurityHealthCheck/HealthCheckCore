@@ -11,8 +11,8 @@ phases:
       - git pull origin release
       - pip3 install pyinstaller
       - python.exe -m pip install -U setuptools
-      - pip3 install --upgrade -r requirements.txt --ignore-installed
-      - pip3 install ./vendor/SDK/ --ignore-installed
+      - pip3 install --upgrade -r requirements.txt
+      - pip3 install ./vendor/SDK/
       - mkdir keys
       - aws s3 cp s3://dshc-public/PUBLIC_key.pem ./keys
   build:
