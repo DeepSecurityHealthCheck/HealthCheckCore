@@ -18,8 +18,8 @@ phases:
   build:
     commands:
       - echo "Building"         
-      - pyinstaller.exe -F extractor.py  --icon=tmlogo.ico
-      # --hidden-import=pkg_resources.py2_warn --hidden-import=deepsecurity -p c:\python37\lib\site-packages\requests -p c:\python37\lib\site-packages\colorama
+      - pyinstaller.exe -F extractor.py --icon=tmlogo.ico --hidden-import=pkg_resources.py2_warn --hidden-import=deepsecurity -p c:\python37\lib\site-packages\requests -p c:\python37\lib\site-packages\colorama
+      # 
   post_build:
     commands:
       - echo "Post build"
