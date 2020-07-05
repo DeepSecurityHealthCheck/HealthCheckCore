@@ -8,7 +8,7 @@ phases:
     commands:
       - echo "Pre build"
       - git checkout release
-      - git pull
+      - git pull origin release
       - pip3 install pyinstaller
       - pip3 install --upgrade -r requirements.txt
       - pip3 install ./vendor/SDK/ --ignore-installed
@@ -22,12 +22,10 @@ phases:
   post_build:
     commands:
       - echo "Post build"
-      - EXTRACTOR_VERSION=$(grep "EXTRACTOR_VERSION =" < lib/constants.py | cut -d " " -f 3 | tr -d \") 
-      - ZIP_NAME=extractor$EXTRACTOR_VERSION-linux.zip
       - python3 utils/gen_config.py
-      - zip $ZIP_NAME -j dist/extractor docs/EXTRACTOR_README.md
-      - zip $ZIP_NAME extractor config/api_config.yml keys/PUBLIC_key.pem
-      - aws s3 cp $ZIP_NAME s3://dshc-public/extractors/
+      - zip extractor-linux.zip -j dist/extractor docs/EXTRACTOR_README.md
+      - zip extractor-linux.zip extractor config/api_config.yml keys/PUBLIC_key.pem
+      - aws s3 cp extractor-linux.zip s3://dshc-public/extractors/
 
         
       
