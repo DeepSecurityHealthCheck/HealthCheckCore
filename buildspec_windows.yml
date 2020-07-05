@@ -7,6 +7,8 @@ phases:
   pre_build:
     commands:
       - echo "Pre build"
+      - git checkout release
+      - git pull origin release
       - pip3 install pyinstaller
       - pip3 install --upgrade -r requirements.txt --ignore-installed
       - pip3 install ./vendor/SDK/ --ignore-installed
@@ -26,12 +28,8 @@ phases:
       - mkdir dist/config
       - cp config/api_config.yml dist/config/
       - cp docs/EXTRACTOR_README.md dist/
-      - $EXTRACTOR_VERSION=((cat .\lib\constants.py | Select-String -Pattern 'EXTRACTOR_VERSION =') -Split " ")[2]
-      - $EXTRACTOR_VERSION=($EXTRACTOR_VERSION -replace'\"')
-      - $ZIP_NAME=("extractor$EXTRACTOR_VERSION-windows.zip")
-      - Add-Type -A System.IO.Compression.FileSystem
-      - [IO.Compression.ZipFile]::CreateFromDirectory('.\dsbpg\dist', $ZIP_NAME)
-      - aws s3 cp $ZIP_NAME s3://dshc-public/extractors/
+      - powershell.exe ./utils/zip_extractor_windows.ps1
+      - aws s3 cp extractor-windows.zip s3://dshc-public/extractors/
 
         
       
