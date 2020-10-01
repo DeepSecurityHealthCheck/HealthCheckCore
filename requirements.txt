@@ -3,7 +3,7 @@ jinja2==2.10.1
 tqdm
 pyyaml > 3.13
 psutil
-cryptography >= 2.5
+cryptography >= 3.0
 funcy
 prompt_toolkit
 pyinstaller

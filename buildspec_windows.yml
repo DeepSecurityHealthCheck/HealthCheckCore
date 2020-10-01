@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.7
+      python: 3.8
   pre_build:
     commands:
       - echo "Pre build"
@@ -18,7 +18,7 @@ phases:
   build:
     commands:
       - echo "Building"         
-      - pyinstaller.exe -F extractor.py --icon=tmlogo.ico --hidden-import=pkg_resources.py2_warn --hidden-import=deepsecurity -p c:\python37\lib\site-packages\requests -p c:\python37\lib\site-packages\colorama
+      - pyinstaller.exe -F extractor.py --icon=tmlogo.ico --hidden-import=pkg_resources.py2_warn --hidden-import=deepsecurity -p c:\python38\lib\site-packages\requests -p c:\python38\lib\site-packages\colorama
       # 
   post_build:
     commands:
