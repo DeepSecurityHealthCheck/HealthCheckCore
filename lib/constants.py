@@ -1,6 +1,6 @@
 from colorama import init, Fore
 import os
-EXTRACTOR_VERSION = "1.8.4"
+EXTRACTOR_VERSION = "1.8.5"
 EXTRACTOR_WIZARD_HEADER = """
 Aways check if you are running the latest version, current: {} !
 By Running this tool you state that:

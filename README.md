@@ -7,7 +7,8 @@ Automated Deep Security Health Check, Currently in **Beta**
 ## QUICKSTART
 Checkout [QUICKSTART.md](./QUICKSTART.md)
 
-## PREREQUESITES
+## PREREQUESITES FOR LOCAL REPORT GENERATION & DEVELOPMENT
+- **Note, if you just want to generate a report for a client go to [Releases](https://github.com/DeepSecurityHealthCheck/HealthCheckCore/releases/) and download the executables, there are no prerequisites.**
 - [Docker](https://docs.docker.com/get-docker/)
 - PyInstaller to generate executables for the extractor tool
 - The complete set of prerequesites and dependencies can be found in the `Dockerfile`. We __advise against__ running the tool without docker.
