@@ -11,6 +11,7 @@ colorama >= 0.4.1
 requests
 inflect
 boto3
+awscli
 #pypiwin32
 
 #https://pyinstaller.readthedocs.io/en/v3.3.1/usage.html#using-upx
