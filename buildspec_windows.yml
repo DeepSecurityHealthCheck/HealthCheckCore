@@ -7,14 +7,12 @@ phases:
   pre_build:
     commands:
       - echo "Pre build"
-      - git checkout release
-      - git pull origin release
+      - mkdir keys
+      - aws s3 cp s3://dshc-public/PUBLIC_key.pem ./keys
       - pip3 install pyinstaller
       - python.exe -m pip install -U setuptools
       - pip3 install --upgrade -r requirements.txt
       - pip3 install ./vendor/SDK/
-      - mkdir keys
-      - aws s3 cp s3://dshc-public/PUBLIC_key.pem ./keys
   build:
     commands:
       - echo "Building"         
