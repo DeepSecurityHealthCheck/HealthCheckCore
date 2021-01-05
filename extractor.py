@@ -126,7 +126,7 @@ def pack_data(data_migrate=None, send_now=True, unencrypted=False):
         data_pack = data_migrate
     else:
         try:
-            print("{}Please fill these infos precisely, they will appear on the report".format(Fore.LIGHTCYAN_EX))
+            print("{}Please precisely fill out the following. The information you provide will appear on the report".format(Fore.LIGHTCYAN_EX))
             data_pack = dl.get_info(include_am_configs=True, include_fw_configs=True)
         except Exception as e:
             print(Fore.RED + "--------------Error while getting the data-------------- \n"
@@ -239,10 +239,10 @@ def pack_data(data_migrate=None, send_now=True, unencrypted=False):
                 exit(-1)
 
             print("{}Probably connection issues due to Firewall or no internet connection, please use this tool\n"
-            " to resubmit the packege on a network with internet access using the command {}--send ".format(Fore.LIGHTYELLOW_EX,Fore.LIGHTRED_EX))
+            " to resubmit the package on a network with internet access using the command {}--send ".format(Fore.LIGHTYELLOW_EX,Fore.LIGHTRED_EX))
 
             print("{}To do it copy/send the new {}{}{} file created on this folder to other machine with internet\n" 
-            "access. the file is extremelly secure it can be manipulated anywere".format(Fore.LIGHTCYAN_EX,
+            "access. The file is extremely secure it can be manipulated anywhere".format(Fore.LIGHTCYAN_EX,
             Fore.LIGHTYELLOW_EX,output_name,Fore.LIGHTCYAN_EX))
 
             print(Fore.LIGHTGREEN_EX + "Package was saved successfully as {} !".format(output_name))
@@ -258,7 +258,7 @@ def pack_data(data_migrate=None, send_now=True, unencrypted=False):
             print(Fore.LIGHTYELLOW_EX+"The package was not sent for processing, you will have to use the command --send to send another time.")
 
             print("{}To do it copy/send the new {}{}{} file created on this folder to another machine with internet\n" 
-            "access. the file is very secure and it can be sent/stored anywere.".format(Fore.LIGHTCYAN_EX,
+            "access. The file is very secure and it can be sent/stored anywhere.".format(Fore.LIGHTCYAN_EX,
             Fore.LIGHTYELLOW_EX,output_name,Fore.LIGHTCYAN_EX))
 
             print(Fore.LIGHTGREEN_EX + "Package was saved successfully as {} !".format(output_name))
@@ -425,7 +425,7 @@ def upload(data_pack, generation_data):
 
 
     if not connected:
-        print(Fore.LIGHTRED_EX + "No internet connection, manually submit the datapacked created on the script folder")
+        print(Fore.LIGHTRED_EX + "No internet connection, manually submit the data package created in the script folder")
         return False
     else:
         print(Fore.GREEN + "Connected to the internet")
@@ -435,7 +435,7 @@ def upload(data_pack, generation_data):
     try:
         binary_blob = base64.b64encode(data_pack).decode('utf-8') + '==='
     except Exception as e:
-        print(Fore.LIGHTRED_EX + "Error while tring to encode data" + str(e))
+        print(Fore.LIGHTRED_EX + "Error while trying to encode data" + str(e))
         return False
 
     req = {
@@ -474,7 +474,7 @@ def get_report(generation_id, check_connection=True):
                 break
 
         if not connected:
-            print(Fore.LIGHTRED_EX + "No internet connection, manually submit the datapacked created on the script folder")
+            print(Fore.LIGHTRED_EX + "No internet connection, manually submit the data pack created in the script folder")
             return False
         else:
             print(Fore.GREEN + "Connected to the internet")
@@ -590,9 +590,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog="extractor", formatter_class=argparse.RawDescriptionHelpFormatter ,epilog=constants.EXTRACTOR_HELP_STRING )
     #parser.add_argument('--silent','-s', action='store_true', help="Run without interactive prompt")
     parser.add_argument('--get', '-g', help="Attempts to download a report of an already submitted pack using the ID")
-    parser.add_argument('--send', '-p', help="Submit a data pack file for report generation, recieves ID")
+    parser.add_argument('--send', '-p', help="Submit a data pack file for report generation, receives ID")
     parser.add_argument('--notsend', '-n', action='store_false', help="Do not send for remote processing, just generate .dat")
-    parser.add_argument('--unencrypted', '-u', action='store_true', help="Generate an UNENCRYPTED version of the Datapack as a json file")
+    parser.add_argument('--unencrypted', '-u', action='store_true', help="Generate an UNENCRYPTED version of the datapack as a json file")
     #parser.add_argument('--key', '-k', help="Path to the public key")
     parser.add_argument('--version', '-v',action='store_true', help='Print version and exit')
     args = parser.parse_args()
